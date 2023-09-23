@@ -9,6 +9,7 @@ import (
 func runSearch() {
 	unsorted := []int{0, 9, 1, 8, 2, 7, 3, 6, 4, 5}
 	sorted := []int{}
+	heights := []bool{false, false, false, false, false, false, false, true, true, true}
 
 	for i := 0; i < 1000; i += 2 {
 		sorted = append(sorted, i)
@@ -16,9 +17,11 @@ func runSearch() {
 
 	resLinear := search.LinearSearch(unsorted, 7)
 	resBinary := search.BinarySearch(sorted, 264)
+	resCrystalBalls := search.CrystalBallProblem(heights)
 
-	fmt.Println(resLinear)
-	fmt.Println(resBinary)
+	fmt.Println("Linear search index: ", resLinear)
+	fmt.Println("Binary search index: ", resBinary)
+	fmt.Println("Crystal ball break height: ", resCrystalBalls)
 }
 
 func main() {
