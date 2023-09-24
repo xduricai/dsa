@@ -1,5 +1,7 @@
 package search
 
+// BinarySearch returns the index of a target integer inside of a slice or -1 if the integer is not present
+// The input slice must be sorted
 func BinarySearch(slice []int, target int) int {
 	low := 0
 	high := len(slice)
