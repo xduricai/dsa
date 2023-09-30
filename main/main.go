@@ -76,8 +76,37 @@ func runList() {
 	fmt.Println(ll.Length())
 }
 
+func runQueue() {
+	q := list.NewQueue[int]()
+
+	val, err := q.Deque()
+	fmt.Println(val, err)
+
+	val, err = q.Peek()
+	fmt.Println(err)
+
+	q.Enqueue(123)
+	fmt.Println(q)
+	val, err = q.Peek()
+	fmt.Println(val)
+
+	q.Deque()
+	fmt.Println(q)
+
+	q.Enqueue(45)
+	q.Enqueue(67)
+	q.Enqueue(89)
+	fmt.Println(q)
+	val, err = q.Peek()
+	fmt.Println(val)
+	val, err = q.Deque()
+	fmt.Println(val)
+	fmt.Println(q)
+}
+
 func main() {
 	//runSearch()
 	//runSort()
-	runList()
+	//runList()
+	runQueue()
 }

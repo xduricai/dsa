@@ -171,6 +171,5 @@ func (list *LinkedList[T]) String() string {
 	}
 
 	message += "]"
-
 	return message
 }
