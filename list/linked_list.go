@@ -12,7 +12,7 @@ type LinkedList[T any] struct {
 	length int
 }
 
-// NewList is a constructor-style method for a linked list
+// NewList is a constructor-style method for a linked list struct
 func NewList[T any]() *LinkedList[T] {
 	return &LinkedList[T]{
 		head:   nil,

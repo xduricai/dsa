@@ -5,12 +5,14 @@ import (
 	"fmt"
 )
 
+// Queue represents a wrapper for a queue struct
 type Queue[T any] struct {
 	head   *Node[T]
 	tail   *Node[T]
 	length int
 }
 
+// NewQueue is a constructor method that returns a new queue struct
 func NewQueue[T any]() *Queue[T] {
 	return &Queue[T]{
 		head:   nil,
@@ -19,6 +21,7 @@ func NewQueue[T any]() *Queue[T] {
 	}
 }
 
+// Enqueue adds an element to the end of the queue
 func (queue *Queue[T]) Enqueue(value T) {
 	node := newNode[T](value)
 
@@ -32,6 +35,7 @@ func (queue *Queue[T]) Enqueue(value T) {
 	queue.tail = node
 }
 
+// Deque removes the first element of the queue
 func (queue *Queue[T]) Deque() (T, error) {
 	if queue.head == nil {
 		return *new(T), errors.New("Cannot deque from an empty queue")
@@ -47,6 +51,7 @@ func (queue *Queue[T]) Deque() (T, error) {
 	return value, nil
 }
 
+// Peak returns the first element of the queue
 func (queue *Queue[T]) Peek() (T, error) {
 	if queue.head == nil {
 		return *new(T), errors.New("Queue is empty")
@@ -55,6 +60,7 @@ func (queue *Queue[T]) Peek() (T, error) {
 	return queue.head.value, nil
 }
 
+// Length returns the length of the queue
 func (queue *Queue[T]) Length() int {
 	return queue.length
 }
