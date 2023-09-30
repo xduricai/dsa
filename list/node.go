@@ -34,10 +34,10 @@ func newNodeDL[T any](value T) *NodeDL[T] {
 
 // String is a stringer method for printing the value of the node
 func (node *Node[T]) String() string {
-	return fmt.Sprintf("Node value:\n %s\n", node.value)
+	return fmt.Sprintf("Node value:\n %v\n", node.value)
 }
 
 // String is a stringer method for printing the value of the node
 func (node *NodeDL[T]) String() string {
-	return fmt.Sprintf("Node value:\n %s\n", node.value)
+	return fmt.Sprintf("Node value:\n %v\n", node.value)
 }
