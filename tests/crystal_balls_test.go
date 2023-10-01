@@ -1,8 +1,10 @@
-package search
+package tests
 
 import (
 	"math/rand"
 	"testing"
+
+	"github.com/xduricai/dsa/search"
 )
 
 func TestCrsystalBalls(t *testing.T) {
@@ -13,7 +15,7 @@ func TestCrsystalBalls(t *testing.T) {
 		breaks[i] = true
 	}
 
-	height := CrystalBallProblem(breaks[:])
+	height := search.CrystalBallProblem(breaks[:])
 
 	if height != minHeight {
 		t.Errorf("Crystal ball problem failed.\nExpected min height: %d\nActual min height: %d\n", minHeight, height)
