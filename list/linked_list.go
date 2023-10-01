@@ -1,9 +1,6 @@
 package list
 
-import (
-	"errors"
-	"fmt"
-)
+import "fmt"
 
 // LinkedList represents a wrapper for a linked list struct
 type LinkedList[T any] struct {
@@ -66,7 +63,7 @@ func (list *LinkedList[T]) Prepend(value T) {
 // InsertAt inserts a value at a specified index of the list
 func (list *LinkedList[T]) InsertAt(value T, index int) error {
 	if index < 0 || index > list.length {
-		return errors.New("Index outside of list bounds")
+		return ErrIndexOutOfBounds
 	}
 	if index == 0 {
 		list.Prepend(value)
@@ -92,7 +89,7 @@ func (list *LinkedList[T]) InsertAt(value T, index int) error {
 // Pop removes the last element of the list and returns it
 func (list *LinkedList[T]) Pop() (T, error) {
 	if list.length == 0 {
-		return *new(T), errors.New("Cannot pop from an empty list")
+		return *new(T), ErrEmptyList
 	}
 
 	list.length--
@@ -112,7 +109,7 @@ func (list *LinkedList[T]) Pop() (T, error) {
 
 func (list *LinkedList[T]) Remove() (T, error) {
 	if list.length == 0 {
-		return *new(T), errors.New("Cannot remove from an empty list")
+		return *new(T), ErrEmptyList
 	}
 
 	list.length--
@@ -131,7 +128,7 @@ func (list *LinkedList[T]) Remove() (T, error) {
 // RemoveAt removes an element of the list at the specified index and returns it
 func (list *LinkedList[T]) RemoveAt(index int) (T, error) {
 	if index < 0 || index >= list.length {
-		return *new(T), errors.New("Index outside of list bounds")
+		return *new(T), ErrIndexOutOfBounds
 	}
 	if index == 0 {
 		return list.Remove()
@@ -151,7 +148,7 @@ func (list *LinkedList[T]) RemoveAt(index int) (T, error) {
 // Get fetches an element at a specified index from the list
 func (list *LinkedList[T]) Get(index int) (T, error) {
 	if index < 0 || index > list.length {
-		return *new(T), errors.New("Index outside of list bounds")
+		return *new(T), ErrIndexOutOfBounds
 	}
 
 	target := list.getNodeAt(index)

@@ -1,9 +1,6 @@
 package list
 
-import (
-	"errors"
-	"fmt"
-)
+import "fmt"
 
 // Queue represents a wrapper for a queue struct
 type Queue[T any] struct {
@@ -38,7 +35,7 @@ func (queue *Queue[T]) Enqueue(value T) {
 // Deque removes the first element of the queue
 func (queue *Queue[T]) Deque() (T, error) {
 	if queue.head == nil {
-		return *new(T), errors.New("Cannot deque from an empty queue")
+		return *new(T), ErrEmptyQueue
 	}
 	if queue.length == 1 {
 		queue.tail = nil
@@ -54,7 +51,7 @@ func (queue *Queue[T]) Deque() (T, error) {
 // Peak returns the first element of the queue
 func (queue *Queue[T]) Peek() (T, error) {
 	if queue.head == nil {
-		return *new(T), errors.New("Queue is empty")
+		return *new(T), ErrEmptyQueue
 	}
 
 	return queue.head.value, nil

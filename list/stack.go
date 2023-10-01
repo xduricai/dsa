@@ -1,9 +1,6 @@
 package list
 
-import (
-	"errors"
-	"fmt"
-)
+import "fmt"
 
 // Stack represents a wrapper for a stack struct
 type Stack[T any] struct {
@@ -30,7 +27,7 @@ func (stack *Stack[T]) Push(value T) {
 // Pop removes the top element of the stack
 func (stack *Stack[T]) Pop() (T, error) {
 	if stack.length == 0 {
-		return *new(T), errors.New("Cannot pop from an empty stack")
+		return *new(T), ErrEmptyStack
 	}
 
 	stack.length--
@@ -42,7 +39,7 @@ func (stack *Stack[T]) Pop() (T, error) {
 // Peak returns the first element of the stack
 func (stack *Stack[T]) Peek() (T, error) {
 	if stack.head == nil {
-		return *new(T), errors.New("Stack is empty")
+		return *new(T), ErrEmptyStack
 	}
 
 	return stack.head.value, nil
