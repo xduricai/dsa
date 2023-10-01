@@ -48,69 +48,7 @@ func runList() {
 	fmt.Println(ll.Length())
 }
 
-func runQueue() {
-	q := list.NewQueue[int]()
-
-	val, err := q.Deque()
-	fmt.Println(val, err)
-
-	val, err = q.Peek()
-	fmt.Println(err)
-
-	q.Enqueue(123)
-	fmt.Println(q)
-	val, err = q.Peek()
-	fmt.Println(val)
-
-	q.Deque()
-	fmt.Println(q)
-
-	q.Enqueue(45)
-	q.Enqueue(67)
-	q.Enqueue(89)
-	fmt.Println(q)
-	val, err = q.Peek()
-	fmt.Println(val)
-	val, err = q.Deque()
-	fmt.Println(val)
-	fmt.Println(q)
-}
-
-func runStack() {
-	s := list.NewStack[int]()
-
-	val, err := s.Pop()
-	fmt.Println(val, err)
-
-	val, err = s.Peek()
-	fmt.Println(err)
-
-	s.Push(123)
-	fmt.Println(s)
-	val, err = s.Peek()
-	fmt.Println(val)
-
-	s.Pop()
-	fmt.Println(s)
-
-	s.Push(45)
-	s.Push(67)
-	s.Push(89)
-	fmt.Println(s)
-	val, err = s.Peek()
-	fmt.Println(val)
-	val, err = s.Pop()
-	fmt.Println(val)
-	fmt.Println(s)
-	s.Push(11)
-	s.Push(22)
-	s.Push(33)
-	s.Pop()
-	fmt.Println(s)
-}
-
 func main() {
+	fmt.Println("This does nothing for now c:")
 	//runList()
-	//runQueue()
-	runStack()
 }
