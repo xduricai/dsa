@@ -2,7 +2,7 @@ package sort
 
 import . "golang.org/x/exp/constraints"
 
-// BubbleSort sorts a slice of ints in place using the bubble sort algorithm
+// BubbleSort sorts a slice of T in place using the bubble sort algorithm
 // The ascending parameter indicates whether the slice should be sorted in ascending or descending order
 func BubbleSort[T Ordered](slice []T, ascending bool) {
 	if ascending {
