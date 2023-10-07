@@ -48,4 +48,12 @@ func TestBinaryTreeTraversal(t *testing.T) {
 			break
 		}
 	}
+
+	bfs1 := trees.BFS[int](tree, 45)
+	bfs2 := trees.BFS[int](tree, 7)
+	bfs3 := trees.BFS[int](tree, 9999)
+
+	if !bfs1 || !bfs2 || bfs3 {
+		t.Errorf("BFS failed")
+	}
 }
