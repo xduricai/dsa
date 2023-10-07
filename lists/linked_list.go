@@ -155,6 +155,15 @@ func (list *LinkedList[T]) Get(index int) (T, error) {
 	return target.value, nil
 }
 
+// Reverse reverses the linked list
+func (list *LinkedList[T]) Reverse() {
+	for current := list.head; current != nil; current = current.previous {
+		current.previous, current.next = current.next, current.previous
+	}
+
+	list.head, list.tail = list.tail, list.head
+}
+
 // String is a stringer method for printing the linked list
 func (list *LinkedList[T]) String() string {
 	message := fmt.Sprintf("List of length: %d\n", list.length)

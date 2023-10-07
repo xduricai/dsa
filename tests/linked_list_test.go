@@ -73,3 +73,24 @@ func TestList(t *testing.T) {
 		t.Errorf("Incorrect list length")
 	}
 }
+
+func TestListReversal(t *testing.T) {
+	values := []int{999, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 111}
+	ll := lists.NewList[int]()
+
+	for i := 0; i < 10; i++ {
+		ll.Append(i + 1)
+	}
+	ll.Reverse()
+	ll.Prepend(999)
+	ll.Append(111)
+
+	for i := range values {
+		value, err := ll.Get(i)
+
+		if values[i] != value || err != nil {
+			t.Errorf("List reversal failed")
+			break
+		}
+	}
+}
