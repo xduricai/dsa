@@ -24,9 +24,9 @@ func TestBinaryTreeTraversal(t *testing.T) {
 	preOrder := []int{20, 10, 5, 7, 15, 50, 30, 29, 45, 100}
 	postOrder := []int{7, 5, 15, 10, 29, 45, 30, 100, 50, 20}
 
-	inOrderResult := trees.InOrderSearch[int](tree, []int{})
-	preOrderResult := trees.PreOrderSearch[int](tree, []int{})
-	postOrderResult := trees.PostOrderSearch[int](tree, []int{})
+	inOrderResult := trees.InOrderTraversal[int](tree, []int{})
+	preOrderResult := trees.PreOrderTraversal[int](tree, []int{})
+	postOrderResult := trees.PostOrderTraversal[int](tree, []int{})
 
 	for i := 0; i < len(inOrder); i++ {
 		if inOrder[i] != inOrderResult[i] {
