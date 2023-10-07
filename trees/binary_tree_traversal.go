@@ -41,6 +41,19 @@ func PostOrderTraversal[T any](node *BinaryNode[T], path []T) []T {
 	return path
 }
 
+// DFS searches for a value in a binary tree using the deptth-first search algorithm and returns a bool value signifying whether the target value is present
+func DFS[T comparable](node *BinaryNode[T], target T) bool {
+	if node == nil {
+		return false
+	}
+
+	if node.value == target {
+		return true
+	}
+
+	return DFS[T](node.Left, target) || DFS[T](node.Right, target)
+}
+
 // BFS searches for a value in a binary tree using the breadth-first search algorithm and returns a bool value signifying whether the target value is present
 func BFS[T comparable](root *BinaryNode[T], target T) bool {
 	q := lists.NewQueue[*BinaryNode[T]]()
