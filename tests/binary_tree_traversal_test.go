@@ -6,7 +6,7 @@ import (
 	"github.com/xduricai/dsa/trees"
 )
 
-func TestBinaryTreeTraversal(t *testing.T) {
+func getTree() *trees.BinaryNode[int] {
 	tree := trees.NewBinaryNode[int](20)
 
 	tree.Left = trees.NewBinaryNode[int](10)
@@ -20,13 +20,13 @@ func TestBinaryTreeTraversal(t *testing.T) {
 	tree.Right.Left.Left = trees.NewBinaryNode[int](29)
 	tree.Right.Left.Right = trees.NewBinaryNode[int](45)
 
-	inOrder := []int{5, 7, 10, 15, 20, 29, 30, 45, 50, 100}
-	preOrder := []int{20, 10, 5, 7, 15, 50, 30, 29, 45, 100}
-	postOrder := []int{7, 5, 15, 10, 29, 45, 30, 100, 50, 20}
+	return tree
+}
 
+func TestInOrderTraversal(t *testing.T) {
+	tree := getTree()
+	inOrder := []int{5, 7, 10, 15, 20, 29, 30, 45, 50, 100}
 	inOrderResult := trees.InOrderTraversal[int](tree, []int{})
-	preOrderResult := trees.PreOrderTraversal[int](tree, []int{})
-	postOrderResult := trees.PostOrderTraversal[int](tree, []int{})
 
 	for i := 0; i < len(inOrder); i++ {
 		if inOrder[i] != inOrderResult[i] {
@@ -34,6 +34,12 @@ func TestBinaryTreeTraversal(t *testing.T) {
 			break
 		}
 	}
+}
+
+func TestPreOrderTraversal(t *testing.T) {
+	tree := getTree()
+	preOrder := []int{20, 10, 5, 7, 15, 50, 30, 29, 45, 100}
+	preOrderResult := trees.PreOrderTraversal[int](tree, []int{})
 
 	for i := 0; i < len(preOrder); i++ {
 		if preOrder[i] != preOrderResult[i] {
@@ -41,6 +47,12 @@ func TestBinaryTreeTraversal(t *testing.T) {
 			break
 		}
 	}
+}
+
+func TestPostOrderTraversal(t *testing.T) {
+	tree := getTree()
+	postOrder := []int{7, 5, 15, 10, 29, 45, 30, 100, 50, 20}
+	postOrderResult := trees.PostOrderTraversal[int](tree, []int{})
 
 	for i := 0; i < len(postOrder); i++ {
 		if postOrder[i] != postOrderResult[i] {
@@ -48,6 +60,10 @@ func TestBinaryTreeTraversal(t *testing.T) {
 			break
 		}
 	}
+}
+
+func TestBFS(t *testing.T) {
+	tree := getTree()
 
 	bfs1 := trees.BFS[int](tree, 45)
 	bfs2 := trees.BFS[int](tree, 7)
@@ -55,5 +71,18 @@ func TestBinaryTreeTraversal(t *testing.T) {
 
 	if !bfs1 || !bfs2 || bfs3 {
 		t.Errorf("BFS failed")
+	}
+}
+
+func TestDFS(t *testing.T) {
+	tree := getTree()
+
+	dfs1 := trees.DFS[int](tree, 45)
+	dfs2 := trees.DFS[int](tree, 7)
+	dfs3 := trees.DFS[int](tree, 15)
+	dfs4 := trees.DFS[int](tree, 9999)
+
+	if !dfs1 || !dfs2 || !dfs3 || dfs4 {
+		t.Errorf("DFS failed")
 	}
 }
