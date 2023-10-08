@@ -76,3 +76,20 @@ func BFS[T comparable](root *BinaryNode[T], target T) bool {
 
 	return false
 }
+
+// Compare compares two binary trees and returns true if both trees have the same shape and values
+func Compare[T comparable](a *BinaryNode[T], b *BinaryNode[T]) bool {
+	if a == nil && b == nil {
+		return true
+	}
+
+	if a == nil || b == nil {
+		return false
+	}
+
+	if a.value != b.value {
+		return false
+	}
+
+	return Compare[T](a.Left, b.Left) && Compare[T](a.Right, b.Right)
+}

@@ -86,3 +86,24 @@ func TestDFS(t *testing.T) {
 		t.Errorf("DFS failed")
 	}
 }
+
+func TestCompare(t *testing.T) {
+	treeA := getTree()
+	treeB := getTree()
+
+	if !trees.Compare[int](treeA, treeB) {
+		t.Errorf("Tree comparison failed for identical trees")
+	}
+
+	treeB.Right.Set(60)
+
+	if trees.Compare[int](treeA, treeB) {
+		t.Errorf("Tree comparison failed for differing trees")
+	}
+
+	treeB.Right.Right.Left = trees.NewBinaryNode[int](99)
+
+	if trees.Compare[int](treeA, treeB) {
+		t.Errorf("Tree comparison failed for differing trees")
+	}
+}
