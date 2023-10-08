@@ -7,7 +7,7 @@ type BinaryNode[T any] struct {
 	Right *BinaryNode[T]
 }
 
-// NewBinaryNode returns a new BinaryNode with a given value
+// NewBinaryNode returns a new BinaryNode containing the given value
 func NewBinaryNode[T any](value T) *BinaryNode[T] {
 	return &BinaryNode[T]{
 		value: value,
