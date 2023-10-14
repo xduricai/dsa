@@ -27,6 +27,22 @@ func NewTrieNode() *TrieNode {
 	return &TrieNode{}
 }
 
+// Count returns the number of valid words in the trie
+func (node *TrieNode) Count() int {
+	count := 0
+	if node.isWord {
+		count++
+	}
+
+	for _, child := range node.data {
+		if child != nil {
+			count += child.Count()
+		}
+	}
+
+	return count
+}
+
 // Insert inserts a given word into the trie if it is valid or returns an error if it is not
 func (node *TrieNode) Insert(input string) error {
 	if !validWord(input) {
