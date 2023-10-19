@@ -32,8 +32,8 @@ func (queue *Queue[T]) Enqueue(value T) {
 	queue.tail = node
 }
 
-// Deque removes the first element of the queue
-func (queue *Queue[T]) Deque() (T, error) {
+// Dequeue removes the first element of the queue
+func (queue *Queue[T]) Dequeue() (T, error) {
 	if queue.head == nil {
 		return *new(T), ErrEmptyQueue
 	}

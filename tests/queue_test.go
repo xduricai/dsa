@@ -9,7 +9,7 @@ import (
 func TestQueue(t *testing.T) {
 	q := lists.NewQueue[int]()
 
-	val, err := q.Deque()
+	val, err := q.Dequeue()
 	if err == nil {
 		t.Errorf("Dequeuing an empty queue did not throw an error")
 	}
@@ -28,7 +28,7 @@ func TestQueue(t *testing.T) {
 		t.Errorf("Incorrect queue length")
 	}
 
-	val, err = q.Deque()
+	val, err = q.Dequeue()
 	if val != 123 {
 		t.Errorf("Incorrect value when popping")
 	}
@@ -45,7 +45,7 @@ func TestQueue(t *testing.T) {
 		t.Errorf("Incorrect queue length")
 	}
 
-	val, err = q.Deque()
+	val, err = q.Dequeue()
 	if val != 45 {
 		t.Errorf("Incorrect value when dequeuing")
 	}

@@ -60,7 +60,7 @@ func BFS[T comparable](root *BinaryNode[T], target T) bool {
 	q.Enqueue(root)
 
 	for q.Length() > 0 {
-		next, _ := q.Deque()
+		next, _ := q.Dequeue()
 
 		if next.value == target {
 			return true
