@@ -22,8 +22,8 @@ func NewPoint(ptX int, ptY int) *Point {
 	}
 }
 
-// Walk is a recursive function that attempts to find a way through the maze by checking all 4 directions for each point on the path while also remembering visited points
-func Walk(maze []string, wall rune, curr *Point, end *Point, seen [][]bool, path *[]Point) bool {
+// walk is a recursive function that attempts to find a way through the maze by checking all 4 directions for each point on the path while also remembering visited points
+func walk(maze []string, wall rune, curr *Point, end *Point, seen [][]bool, path *[]Point) bool {
 	if curr.X < 0 || curr.Y < 0 || curr.X >= len(maze[0]) || curr.Y >= len(maze) {
 		return false
 	}
@@ -44,7 +44,7 @@ func Walk(maze []string, wall rune, curr *Point, end *Point, seen [][]bool, path
 	for idx := range dirs {
 		x, y := dirs[idx][0], dirs[idx][1]
 		next := NewPoint(curr.X+x, curr.Y+y)
-		foundEnd := Walk(maze, wall, next, end, seen, path)
+		foundEnd := walk(maze, wall, next, end, seen, path)
 
 		if foundEnd {
 			return true
@@ -65,6 +65,6 @@ func Solve(maze []string, wall rune, start *Point, end *Point) []Point {
 		seen[col] = make([]bool, len(maze[0]))
 	}
 
-	Walk(maze, wall, start, end, seen, &path)
+	walk(maze, wall, start, end, seen, &path)
 	return path
 }
