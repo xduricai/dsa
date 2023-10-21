@@ -10,13 +10,13 @@ func walkMatrix(graph *AdjecencyMatrix, current int, target int, seen *[]bool, p
 	if (*seen)[current] {
 		return false
 	}
-	if current == target {
-		*path = append((*path), target)
-		return true
-	}
 
 	(*seen)[current] = true
 	*path = append((*path), current)
+
+	if current == target {
+		return true
+	}
 	adjecent := (*graph)[current]
 
 	for i := range adjecent {
@@ -38,8 +38,8 @@ func walkMatrix(graph *AdjecencyMatrix, current int, target int, seen *[]bool, p
 func MatrixDFS(graph *AdjecencyMatrix, source int, target int) []int {
 	path := []int{}
 	seen := make([]bool, len(*graph))
-
 	walkMatrix(graph, source, target, &seen, &path)
+
 	return path
 }
 

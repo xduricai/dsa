@@ -33,13 +33,13 @@ func walk(maze []string, wall rune, curr *Point, end *Point, seen [][]bool, path
 	if seen[curr.Y][curr.X] {
 		return false
 	}
-	if curr.X == end.X && curr.Y == end.Y {
-		*path = append(*path, *end)
-		return true
-	}
 
 	seen[curr.Y][curr.X] = true
 	*path = append(*path, *curr)
+
+	if curr.X == end.X && curr.Y == end.Y {
+		return true
+	}
 
 	for idx := range dirs {
 		x, y := dirs[idx][0], dirs[idx][1]
