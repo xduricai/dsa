@@ -17,8 +17,8 @@ func TestGraphMatrixSearch(t *testing.T) {
 		{0, 0, 0, 1, 0, 0, 1},
 	}
 	expected := []int{0, 1, 4, 5, 6}
-	pathBfs := graphs.BFS(&matrix, 0, 6)
-	pathDfs := graphs.DFS(&matrix, 0, 6)
+	pathBfs := graphs.MatrixBFS(&matrix, 0, 6)
+	pathDfs := graphs.MatrixDFS(&matrix, 0, 6)
 
 	if len(pathBfs) != len(expected) {
 		t.Errorf("Graph matrix BFS failed, path is of incorrect length")
@@ -39,8 +39,8 @@ func TestGraphMatrixSearch(t *testing.T) {
 	}
 
 	matrix[5][6] = 0
-	pathBfs = graphs.BFS(&matrix, 0, 6)
-	pathDfs = graphs.DFS(&matrix, 0, 6)
+	pathBfs = graphs.MatrixBFS(&matrix, 0, 6)
+	pathDfs = graphs.MatrixDFS(&matrix, 0, 6)
 	if len(pathBfs) != 0 {
 		t.Errorf("Graph matrix BFS failed, returned path when none exists")
 	}
