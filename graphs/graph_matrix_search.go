@@ -36,6 +36,9 @@ func walkMatrix(graph *AdjecencyMatrix, current int, target int, seen *[]bool, p
 
 // DFS uses depth-first search to find the path from a source node to a target node in a graph, returns a slice with the order of nodes or an empty slice if no path exists
 func MatrixDFS(graph *AdjecencyMatrix, source int, target int) []int {
+	if target >= len(*graph) || source >= len(*graph) {
+		return []int{}
+	}
 	path := []int{}
 	seen := make([]bool, len(*graph))
 	walkMatrix(graph, source, target, &seen, &path)
@@ -45,6 +48,9 @@ func MatrixDFS(graph *AdjecencyMatrix, source int, target int) []int {
 
 // BFS uses breadth-first search to find the path from a source node to a target node in a graph, returns a slice with the order of nodes or an empty slice if no path exists
 func MatrixBFS(graph *AdjecencyMatrix, source int, target int) []int {
+	if target >= len(*graph) || source >= len(*graph) {
+		return []int{}
+	}
 	seen := make([]bool, len(*graph))
 	previous := make([]int, len(*graph))
 	for idx := range previous {
