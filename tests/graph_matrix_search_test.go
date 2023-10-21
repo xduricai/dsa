@@ -38,6 +38,12 @@ func TestGraphMatrixSearch(t *testing.T) {
 		}
 	}
 
+	pathBfs = graphs.MatrixBFS(&matrix, 7, 6)
+	pathDfs = graphs.MatrixDFS(&matrix, 7, 6)
+	if len(pathBfs) != 0 || len(pathDfs) != 0 {
+		t.Errorf("Graph matrix failed for node not in graph")
+	}
+
 	matrix[5][6] = 0
 	pathBfs = graphs.MatrixBFS(&matrix, 0, 6)
 	pathDfs = graphs.MatrixDFS(&matrix, 0, 6)

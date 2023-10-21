@@ -23,14 +23,12 @@ func walkMatrix(graph *AdjecencyMatrix, current int, target int, seen *[]bool, p
 		if adjecent[i] == 0 {
 			continue
 		}
-		foundTarget := walkMatrix(graph, i, target, seen, path)
-
-		if foundTarget {
+		if walkMatrix(graph, i, target, seen, path) {
 			return true
 		}
 	}
-	*path = (*path)[:len(*path)-1]
 
+	*path = (*path)[:len(*path)-1]
 	return false
 }
 
@@ -84,8 +82,8 @@ func MatrixBFS(graph *AdjecencyMatrix, source int, target int) []int {
 		return []int{}
 	}
 
-	current := target
 	path := []int{}
+	current := target
 
 	for current != -1 {
 		path = append([]int{current}, path...)
