@@ -2,15 +2,6 @@ package graphs
 
 import "github.com/xduricai/dsa/lists"
 
-// Edge represents and edge in a graph, containing its weight and destination node
-type Edge struct {
-	To     int
-	Weight int
-}
-
-// AdjecencyList is a type alias for a 2D array of Edge structs
-type AdjecencyList = [][]Edge
-
 // walkList checks whether a vertex of a graph is our destination and subsequently walks to its neighbours
 func walkList(graph *AdjecencyList, current int, target int, seen *[]bool, path *[]int) bool {
 	if (*seen)[current] {

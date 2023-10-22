@@ -78,7 +78,6 @@ func TestListGraphSearch(t *testing.T) {
 	pathDfs2 := graphs.ListDFS(&list2, 0, 6)
 
 	if len(pathBfs1) != len(expected0) {
-		t.Log(pathBfs1)
 		t.Errorf("Graph list BFS 1 failed, path is of incorrect length")
 	}
 	if len(pathBfs2) != len(expected2) {
