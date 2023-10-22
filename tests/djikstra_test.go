@@ -6,7 +6,7 @@ import (
 	"github.com/xduricai/dsa/graphs"
 )
 
-func TestDjikstra(t *testing.T) {
+func TestDijkstra(t *testing.T) {
 	list1 := graphs.AdjecencyList{
 		[]graphs.Edge{
 			{To: 1, Weight: 3},
@@ -70,14 +70,14 @@ func TestDjikstra(t *testing.T) {
 	}
 
 	expected := []int{0, 1, 4, 5, 6}
-	path1 := graphs.Djikstra(&list1, 0, 6)
-	path2 := graphs.Djikstra(&list2, 0, 6)
+	path1 := graphs.Dijkstra(&list1, 0, 6)
+	path2 := graphs.Dijkstra(&list2, 0, 6)
 
 	if len(path1) != len(expected) {
-		t.Errorf("Djikstra list 1 failed, path is of incorrect length")
+		t.Errorf("Dijkstra list 1 failed, path is of incorrect length")
 	}
 	if len(path2) != len(expected) {
-		t.Errorf("Djikstra list 2 failed, path is of incorrect length")
+		t.Errorf("Dijkstra list 2 failed, path is of incorrect length")
 	}
 
 	for idx := range expected {

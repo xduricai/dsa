@@ -4,6 +4,7 @@ import "math"
 
 const Infinity = math.MaxInt32
 
+// getLowestUnvisited returns the number of the graph vertex with the shortest distance from the source
 func getLowestUnvisited(seen *[]bool, distances *[]int) int {
 	idx := -1
 	lowest := Infinity
@@ -21,7 +22,8 @@ func getLowestUnvisited(seen *[]bool, distances *[]int) int {
 	return idx
 }
 
-func Djikstra(graph *AdjecencyList, source int, target int) []int {
+// Dijkstra finds the shortest path in an adjecency list of a weighted graph using Dijkstra's shortest path algorithm
+func Dijkstra(graph *AdjecencyList, source int, target int) []int {
 	seen := make([]bool, len(*graph))
 	previous := make([]int, len(*graph))
 	for idx := range previous {
@@ -62,7 +64,8 @@ func Djikstra(graph *AdjecencyList, source int, target int) []int {
 	return path
 }
 
-// func DjikstraHeap(graph *AdjecencyList, source int, target int) []int {
+// DijkstraHeao finds the shortest path in an adjecency list of a weighted graph using Dijkstra's shortest path algorithm, using a Heap instead of an array to keep track of distances
+// func DijkstraHeap(graph *AdjecencyList, source int, target int) []int {
 // 	previous := make([]int, len(*graph))
 // 	for idx := range previous {
 // 		previous[idx] = -1
