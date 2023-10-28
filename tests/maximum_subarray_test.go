@@ -14,4 +14,12 @@ func TestMaximumSubarray(t *testing.T) {
 	if res != expected {
 		t.Errorf("Maximum Subarray failed")
 	}
+
+	slice = []int{-3, -8, -1, -2, -5, -3, -4, -3, -10, -2, -4}
+	expected = -1
+	res = other.MaximumSubarray(&slice)
+
+	if res != expected {
+		t.Errorf("Maximum Subarray failed")
+	}
 }
