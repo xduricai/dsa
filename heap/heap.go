@@ -10,17 +10,15 @@ var ErrDeleteFromEmptyHeap = errors.New("Cannot delete from an empty heap")
 
 // MinHeap is a struct representing a MinHeap
 type MinHeap[T Ordered] struct {
-	length      int
-	data        []T
-	greaterThan func(T, T) bool
+	length int
+	data   []T
 }
 
 // NewMinHeap is a constructor function for a MinHeap, it takes in a function which decides which compares 2 values of type T
-func NewMinHeap[T Ordered](greaterThan func(T, T) bool) *MinHeap[T] {
+func NewMinHeap[T Ordered]() *MinHeap[T] {
 	return &MinHeap[T]{
-		length:      0,
-		data:        []T{},
-		greaterThan: greaterThan,
+		length: 0,
+		data:   []T{},
 	}
 }
 
@@ -87,7 +85,7 @@ func (heap *MinHeap[T]) heapifyDown(idx int) {
 	lValue := heap.data[lIdx]
 
 	if rIdx == heap.length {
-		if heap.greaterThan(value, lValue) {
+		if value > lValue {
 			heap.data[idx] = lValue
 			heap.data[lIdx] = value
 		}
@@ -96,11 +94,11 @@ func (heap *MinHeap[T]) heapifyDown(idx int) {
 
 	rValue := heap.data[rIdx]
 
-	if heap.greaterThan(lValue, rValue) && heap.greaterThan(value, rValue) {
+	if lValue > rValue && value > rValue {
 		heap.data[idx] = rValue
 		heap.data[rIdx] = value
 		heap.heapifyDown(rIdx)
-	} else if heap.greaterThan(value, lValue) {
+	} else if value > lValue {
 		heap.data[idx] = lValue
 		heap.data[lIdx] = value
 		heap.heapifyDown(lIdx)

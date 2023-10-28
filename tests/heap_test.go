@@ -7,15 +7,8 @@ import (
 )
 
 func TestHeap(t *testing.T) {
-	comparator := func(a int, b int) bool {
-		if a > b {
-			return true
-		}
-		return false
-	}
-
 	values := []int{1, 3, 4, 5, 7, 8, 70, 100}
-	heap := heap.NewMinHeap[int](comparator)
+	heap := heap.NewMinHeap[int]()
 
 	heap.Insert(5)
 	heap.Insert(3)
