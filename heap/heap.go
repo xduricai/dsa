@@ -1,12 +1,6 @@
 package heap
 
-import (
-	"errors"
-
-	. "golang.org/x/exp/constraints"
-)
-
-var ErrDeleteFromEmptyHeap = errors.New("Cannot delete from an empty heap")
+import . "golang.org/x/exp/constraints"
 
 // MinHeap is a struct representing a MinHeap
 type MinHeap[T Ordered] struct {
@@ -103,19 +97,4 @@ func (heap *MinHeap[T]) heapifyDown(idx int) {
 		heap.data[lIdx] = value
 		heap.heapifyDown(lIdx)
 	}
-}
-
-// parent uses an index of an item in the heap to calculate the index of its parent
-func parent(idx int) int {
-	return (idx - 1) / 2
-}
-
-// leftChild uses an index of an item in the heap to calculate the index of its left child
-func leftChild(idx int) int {
-	return idx*2 + 1
-}
-
-// rightChild uses an index of an item in the heap to calculate the index of its right child
-func rightChild(idx int) int {
-	return idx*2 + 2
 }
