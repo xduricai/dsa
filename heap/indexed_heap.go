@@ -3,35 +3,35 @@ package heap
 import . "golang.org/x/exp/constraints"
 
 // node represents a node of the heap, containing getter values for the key and value attributes as well as a setter for the value attribute
-type node[T1 Ordered, T2 Ordered] interface {
-	Key() T1
-	Value() T2
-	SetValue(T2)
+type node[K Ordered, V Ordered] interface {
+	Key() K
+	Value() V
+	SetValue(V)
 }
 
 // IndexedMinHeap is a struct representing a an indexed MinHeap which uses a map to keep track of where specific elements are currently located inside of the heap
-type IndexedMinHeap[T1 Ordered, T2 Ordered] struct {
+type IndexedMinHeap[K Ordered, V Ordered] struct {
 	length  int
-	data    []node[T1, T2]
-	indexer map[T1]int
+	data    []node[K, V]
+	indexer map[K]int
 }
 
 // NewIndexedMinHeap is a constructor function for an indexed MinHeap
-func NewIndexedMinHeap[T1 Ordered, T2 Ordered]() *IndexedMinHeap[T1, T2] {
-	return &IndexedMinHeap[T1, T2]{
+func NewIndexedMinHeap[K Ordered, V Ordered]() *IndexedMinHeap[K, V] {
+	return &IndexedMinHeap[K, V]{
 		length:  0,
-		data:    []node[T1, T2]{},
-		indexer: map[T1]int{},
+		data:    []node[K, V]{},
+		indexer: map[K]int{},
 	}
 }
 
 // Length returns the number of items in the heap
-func (heap *IndexedMinHeap[T1, T2]) Length() int {
+func (heap *IndexedMinHeap[K, V]) Length() int {
 	return heap.length
 }
 
 // Insert inserts a new value into the heap
-func (heap *IndexedMinHeap[T1, T2]) Insert(value node[T1, T2]) {
+func (heap *IndexedMinHeap[K, V]) Insert(value node[K, V]) {
 	heap.data = append(heap.data, value)
 	heap.indexer[value.Key()] = heap.length
 	heap.heapifyUp(heap.length)
@@ -39,16 +39,16 @@ func (heap *IndexedMinHeap[T1, T2]) Insert(value node[T1, T2]) {
 }
 
 // Get takes in a key and returns the heap node mapped to the key
-func (heap *IndexedMinHeap[T1, T2]) Get(key T1) (node[T1, T2], error) {
+func (heap *IndexedMinHeap[K, V]) Get(key K) (node[K, V], error) {
 	idx, exists := heap.indexer[key]
 	if !exists {
-		return *new(node[T1, T2]), ErrNodeNotInHeap
+		return *new(node[K, V]), ErrNodeNotInHeap
 	}
 	return heap.data[idx], nil
 }
 
 // Update takes in a key and a value, updates the value of a heap node mapped to the key, then sorts the heap
-func (heap *IndexedMinHeap[T1, T2]) Update(key T1, value T2) {
+func (heap *IndexedMinHeap[K, V]) Update(key K, value V) {
 	idx, exists := heap.indexer[key]
 	if !exists {
 		return
@@ -66,9 +66,9 @@ func (heap *IndexedMinHeap[T1, T2]) Update(key T1, value T2) {
 }
 
 // Delete deletes a value from the root of the heap
-func (heap *IndexedMinHeap[T1, T2]) Delete() (node[T1, T2], error) {
+func (heap *IndexedMinHeap[K, V]) Delete() (node[K, V], error) {
 	if heap.length == 0 {
-		return *new(node[T1, T2]), ErrDeleteFromEmptyHeap
+		return *new(node[K, V]), ErrDeleteFromEmptyHeap
 	}
 
 	out := heap.data[0]
@@ -76,7 +76,7 @@ func (heap *IndexedMinHeap[T1, T2]) Delete() (node[T1, T2], error) {
 	heap.length--
 
 	if heap.length == 0 {
-		heap.data = []node[T1, T2]{}
+		heap.data = []node[K, V]{}
 		return out, nil
 	}
 
@@ -89,7 +89,7 @@ func (heap *IndexedMinHeap[T1, T2]) Delete() (node[T1, T2], error) {
 }
 
 // heapifyUp starts at the end of the heap and recursively bubbles the smallest value inside the heap to the top
-func (heap *IndexedMinHeap[T1, T2]) heapifyUp(idx int) {
+func (heap *IndexedMinHeap[K, V]) heapifyUp(idx int) {
 	if idx == 0 {
 		return
 	}
@@ -108,7 +108,7 @@ func (heap *IndexedMinHeap[T1, T2]) heapifyUp(idx int) {
 }
 
 // heapifyDown starts at the top of the heap and recursively bubbles a value to its appropriate position inside the heap
-func (heap *IndexedMinHeap[T1, T2]) heapifyDown(idx int) {
+func (heap *IndexedMinHeap[K, V]) heapifyDown(idx int) {
 	lIdx := leftChild(idx)
 	rIdx := rightChild(idx)
 
