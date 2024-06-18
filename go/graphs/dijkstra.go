@@ -3,7 +3,7 @@ package graphs
 import (
 	"math"
 
-	"github.com/xduricai/dsa/heap"
+	"github.com/xduricai/dsa/go/heap"
 )
 
 const infinity = math.MaxInt32

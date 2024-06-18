@@ -3,7 +3,7 @@ package tests
 import (
 	"testing"
 
-	"github.com/xduricai/dsa/sort"
+	"github.com/xduricai/dsa/go/sort"
 )
 
 func TestBubbleSortAscending(t *testing.T) {

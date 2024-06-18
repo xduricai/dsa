@@ -3,7 +3,7 @@ package tests
 import (
 	"testing"
 
-	"github.com/xduricai/dsa/graphs"
+	"github.com/xduricai/dsa/go/graphs"
 )
 
 func TestListGraphSearch(t *testing.T) {

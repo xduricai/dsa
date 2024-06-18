@@ -3,7 +3,7 @@ package tests
 import (
 	"testing"
 
-	"github.com/xduricai/dsa/trees"
+	"github.com/xduricai/dsa/go/trees"
 )
 
 func TestTrie(t *testing.T) {

@@ -1,4 +1,4 @@
-module github.com/xduricai/dsa
+module github.com/xduricai/dsa/go
 
 go 1.21.1
 

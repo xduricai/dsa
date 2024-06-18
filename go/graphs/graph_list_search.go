@@ -1,6 +1,6 @@
 package graphs
 
-import "github.com/xduricai/dsa/lists"
+import "github.com/xduricai/dsa/go/lists"
 
 // walkList checks whether a vertex of a graph is our destination and subsequently walks to its neighbours
 func walkList(graph *AdjecencyList, current int, target int, seen *[]bool, path *[]int) bool {

@@ -3,7 +3,7 @@ package tests
 import (
 	"testing"
 
-	"github.com/xduricai/dsa/search"
+	"github.com/xduricai/dsa/go/search"
 )
 
 func TestBinary(t *testing.T) {

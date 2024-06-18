@@ -3,7 +3,7 @@ package tests
 import (
 	"testing"
 
-	"github.com/xduricai/dsa/heap"
+	"github.com/xduricai/dsa/go/heap"
 )
 
 func TestHeap(t *testing.T) {

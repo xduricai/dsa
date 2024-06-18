@@ -3,7 +3,7 @@ package tests
 import (
 	"testing"
 
-	"github.com/xduricai/dsa/lists"
+	"github.com/xduricai/dsa/go/lists"
 )
 
 func TestList(t *testing.T) {

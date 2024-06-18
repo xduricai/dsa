@@ -1,6 +1,6 @@
 package trees
 
-import "github.com/xduricai/dsa/lists"
+import "github.com/xduricai/dsa/go/lists"
 
 // InOrderTraversal returns an in-order slice of values in a binary tree
 func InOrderTraversal[T any](node *BinaryNode[T], path []T) []T {

@@ -4,7 +4,7 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/xduricai/dsa/search"
+	"github.com/xduricai/dsa/go/search"
 )
 
 func TestCrsystalBalls(t *testing.T) {

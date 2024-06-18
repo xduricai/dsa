@@ -3,7 +3,7 @@ package tests
 import (
 	"testing"
 
-	"github.com/xduricai/dsa/cache"
+	"github.com/xduricai/dsa/go/cache"
 )
 
 func TestLruCache(t *testing.T) {

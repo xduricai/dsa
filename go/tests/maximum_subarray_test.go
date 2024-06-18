@@ -3,7 +3,7 @@ package tests
 import (
 	"testing"
 
-	"github.com/xduricai/dsa/other"
+	"github.com/xduricai/dsa/go/other"
 )
 
 func TestMaximumSubarray(t *testing.T) {
