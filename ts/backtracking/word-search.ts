@@ -1,4 +1,4 @@
-function exist(board: string[][], word: string): boolean {
+export function exist(board: string[][], word: string): boolean {
     const height = board.length;
     const width = board[0].length;
     const seen = new Set();
