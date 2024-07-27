@@ -28,7 +28,7 @@ func (heap *MinHeap[T]) Insert(value T) {
 	heap.length++
 }
 
-// Delete deletes the last value in the MinHeap
+// Delete deletes the first value in the MinHeap
 func (heap *MinHeap[T]) Delete() (T, error) {
 	if heap.length == 0 {
 		return *new(T), ErrDeleteFromEmptyHeap

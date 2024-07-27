@@ -48,7 +48,7 @@ func (queue *Queue[T]) Dequeue() (T, error) {
 	return value, nil
 }
 
-// Peak returns the first element of the queue
+// Peek returns the first element of the queue
 func (queue *Queue[T]) Peek() (T, error) {
 	if queue.head == nil {
 		return *new(T), ErrEmptyQueue

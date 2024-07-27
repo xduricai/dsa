@@ -36,7 +36,7 @@ func (stack *Stack[T]) Pop() (T, error) {
 	return value, nil
 }
 
-// Peak returns the first element of the stack
+// Peek returns the first element of the stack
 func (stack *Stack[T]) Peek() (T, error) {
 	if stack.head == nil {
 		return *new(T), ErrEmptyStack
