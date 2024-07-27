@@ -1,13 +1,13 @@
 export class Heap {
-    length: number = 0;
-    private data: number[] = [];
+    length = 0;
+    data = [];
 
     peek() {
         if (!this.length) return undefined;
         return this.data[0];
     }
 
-    add(value: number) {
+    add(value) {
         this.data.push(value);
         this.heapifyUp(this.length);
         this.length++;
@@ -26,7 +26,7 @@ export class Heap {
         return out;
     }
 
-    private heapifyUp(idx: number) {
+    heapifyUp(idx) {
         if (!idx) return;
 
         const parentIdx = this.parent(idx);
@@ -40,7 +40,7 @@ export class Heap {
         }
     }
 
-    private heapifyDown(idx: number) {
+    heapifyDown(idx) {
         if (idx >= this.length - 1) return;
 
         const leftIdx = this.leftChild(idx);
@@ -70,7 +70,7 @@ export class Heap {
         }
     }
 
-    private parent = (idx: number) => Math.floor((idx - 1) / 2);
-    private leftChild = (idx: number) => idx * 2 + 1;
-    private rightChild = (idx: number) => idx * 2 + 2;
+    parent = (idx) => Math.floor((idx - 1) / 2);
+    leftChild = (idx) => idx * 2 + 1;
+    rightChild = (idx) => idx * 2 + 2;
 }
