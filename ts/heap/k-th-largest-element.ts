@@ -1,6 +1,6 @@
 import { Heap } from "./heap";
 
-function findKthLargest(nums: number[], k: number): number {
+export function findKthLargest(nums: number[], k: number): number {
     k = nums.length - k;
 
     const quickSelect = (left: number, right: number) => {
@@ -28,7 +28,7 @@ function findKthLargest(nums: number[], k: number): number {
         return nums[ptr];
     }
     return quickSelect(0, nums.length - 1);
-}
+};
 
 export function findKthLargestAlt(nums: number[], k: number): number {
     const heap = new Heap<number>();
