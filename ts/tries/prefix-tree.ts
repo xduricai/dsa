@@ -1,0 +1,42 @@
+class TrieNode {
+    children = new Map<string, TrieNode>();
+    isWord = false;
+}
+
+class Trie {
+    root = new TrieNode();
+
+    insert(word: string): void {
+        let current = this.root;
+
+        for (let char of word) {
+            let child = current.children.get(char);
+            if (!child) {
+                child = new TrieNode();
+                current.children.set(char, child);
+            }
+            current = child;
+        }
+        current.isWord = true;
+    }
+
+    search(word: string): boolean {
+        let current = this.root;
+
+        for (let char of word) {
+            current = current.children.get(char);
+            if (!current) return false;
+        }
+        return current.isWord; 
+    }
+
+    startsWith(prefix: string): boolean {
+        let current = this.root;
+
+        for (let char of prefix) {
+            current = current.children.get(char);
+            if (!current) return false;
+        }
+        return true;
+    }
+}
