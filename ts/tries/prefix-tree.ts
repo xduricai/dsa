@@ -1,9 +1,6 @@
-class TrieNode {
-    children = new Map<string, TrieNode>();
-    isWord = false;
-}
+import { TrieNode } from "./trie-node";
 
-class Trie {
+export class Trie {
     root = new TrieNode();
 
     insert(word: string): void {
