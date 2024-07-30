@@ -4,7 +4,7 @@ import { TrieNode } from "./trie-node";
 export function findWords(board: string[][], words: string[]): string[] {
     const trie = new Trie();
     const seen = new Set<string>();
-    const output = new Set<string>();
+    const output = [];
     const current = [];
 
     for (let word of words) {
@@ -30,7 +30,7 @@ export function findWords(board: string[][], words: string[]): string[] {
         current.push(letter);
         seen.add(pos);
         if (child.isWord) {
-            output.add(current.join(""));
+            output.push(current.join(""));
             child.isWord = false;
             trie.delete(current.join(""));
         }
