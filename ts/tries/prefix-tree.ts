@@ -5,6 +5,7 @@ export class Trie {
 
     insert(word: string): void {
         let current = this.root;
+        current.refs++;
 
         for (let char of word) {
             let child = current.children.get(char);
@@ -13,8 +14,20 @@ export class Trie {
                 current.children.set(char, child);
             }
             current = child;
+            current.refs++;
         }
         current.isWord = true;
+    }
+
+    delete(word: string) {
+        let current = this.root;
+        current.refs--;
+
+        for (let char of word) {
+            current = current.children.get(char);
+            if (!current) return;
+            current.refs--;
+        }
     }
 
     search(word: string): boolean {
