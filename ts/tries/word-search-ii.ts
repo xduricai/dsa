@@ -23,16 +23,16 @@ export function findWords(board: string[][], words: string[]): string[] {
 
         const letter = board[row][col];
         const child = node.children.get(letter);
-        if (!child || !child.refs) {
+        if (!child) {
             return;
         }
 
         current.push(letter);
         seen.add(pos);
         if (child.isWord) {
-            output.push(current.join(""));
-            child.isWord = false;
-            trie.delete(current.join(""));
+            const word = current.join("");
+            output.push(word);
+            trie.delete(word);
         }
 
         dfs(row - 1, col, child);
@@ -49,5 +49,5 @@ export function findWords(board: string[][], words: string[]): string[] {
             dfs(row, col, trie.root);
         }
     }
-    return [...output];
+    return output;
 }

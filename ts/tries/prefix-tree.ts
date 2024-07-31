@@ -20,14 +20,28 @@ export class Trie {
     }
 
     delete(word: string) {
-        let current = this.root;
-        current.refs--;
+        const walk = (node: TrieNode | undefined, idx: number) => {
+            if (!node) return false;
+        
+            if (idx === word.length) {
+                if (!node.isWord) return false;
 
-        for (let char of word) {
-            current = current.children.get(char);
-            if (!current) return;
-            current.refs--;
-        }
+                node.isWord = false;
+                node.refs--;
+                return true;
+            }
+
+            const child = node.children.get(word[idx]);
+            const containsWord = walk(child, idx + 1);
+            if (!containsWord) return false;
+
+            node.refs--;
+            if (!child.refs) {
+                node.children.delete(word[idx]);
+            }
+            return true;
+        };
+        walk(this.root, 0);        
     }
 
     search(word: string): boolean {
