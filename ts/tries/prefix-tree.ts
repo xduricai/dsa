@@ -5,7 +5,6 @@ export class Trie {
 
     insert(word: string): void {
         let current = this.root;
-        current.refs++;
 
         for (let char of word) {
             let child = current.children.get(char);
@@ -14,7 +13,6 @@ export class Trie {
                 current.children.set(char, child);
             }
             current = child;
-            current.refs++;
         }
         current.isWord = true;
     }
@@ -27,7 +25,6 @@ export class Trie {
                 if (!node.isWord) return false;
 
                 node.isWord = false;
-                node.refs--;
                 return true;
             }
 
@@ -35,8 +32,7 @@ export class Trie {
             const containsWord = walk(child, idx + 1);
             if (!containsWord) return false;
 
-            node.refs--;
-            if (!child.refs) {
+            if (!child.children.size) {
                 node.children.delete(word[idx]);
             }
             return true;
