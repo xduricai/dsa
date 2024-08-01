@@ -1,4 +1,4 @@
-function maxAreaOfIsland(grid: number[][]): number {
+export function maxAreaOfIsland(grid: number[][]): number {
     const seen = new Set<string>();
     let max = 0;
 

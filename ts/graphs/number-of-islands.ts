@@ -1,4 +1,4 @@
-function numIslands(grid: string[][]): number {
+export function numIslands(grid: string[][]): number {
     const seen = Array(grid.length)
         .fill(null)
         .map(_ => Array(grid[0].length).fill(false));
