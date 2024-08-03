@@ -3,21 +3,29 @@ export function maxAreaOfIsland(grid: number[][]): number {
     let max = 0;
 
     const inBounds = (row: number, col: number) => {
-        return row >= 0 && col >= 0 && row < grid.length && col < grid[0].length;
-    }
+        return (
+            row >= 0 && col >= 0 && row < grid.length && col < grid[0].length
+        );
+    };
 
     const dfs = (row: number, col: number) => {
-        if (!inBounds(row, col) || seen.has(`${row}-${col}`) || grid[row][col] === 0) {
+        if (
+            !inBounds(row, col) ||
+            seen.has(`${row}-${col}`) ||
+            grid[row][col] === 0
+        ) {
             return 0;
         }
         seen.add(`${row}-${col}`);
-        
-        return 1 
-            + dfs(row - 1, col)
-            + dfs(row, col + 1)
-            + dfs(row + 1, col)
-            + dfs(row, col - 1);
-    }
+
+        return (
+            1 +
+            dfs(row - 1, col) +
+            dfs(row, col + 1) +
+            dfs(row + 1, col) +
+            dfs(row, col - 1)
+        );
+    };
 
     for (let row = 0; row < grid.length; row++) {
         for (let col = 0; col < grid[0].length; col++) {
@@ -31,4 +39,4 @@ export function maxAreaOfIsland(grid: number[][]): number {
         }
     }
     return max;
-};
+}

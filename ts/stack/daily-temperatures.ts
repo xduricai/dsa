@@ -1,7 +1,7 @@
 export function dailyTemperatures(temperatures: number[]) {
     const ret: number[] = [];
     const stack: number[] = [];
-    
+
     for (let idx = 0; idx < temperatures.length; idx++) {
         while (stack.length) {
             const lastIdx = stack[stack.length - 1];

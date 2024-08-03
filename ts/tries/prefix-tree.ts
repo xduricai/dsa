@@ -20,7 +20,7 @@ export class Trie {
     delete(word: string) {
         const walk = (node: TrieNode | undefined, idx: number) => {
             if (!node) return false;
-        
+
             if (idx === word.length) {
                 if (!node.isWord) return false;
 
@@ -37,7 +37,7 @@ export class Trie {
             }
             return true;
         };
-        walk(this.root, 0);        
+        walk(this.root, 0);
     }
 
     search(word: string): boolean {
@@ -47,7 +47,7 @@ export class Trie {
             current = current.children.get(char);
             if (!current) return false;
         }
-        return current.isWord; 
+        return current.isWord;
     }
 
     startsWith(prefix: string): boolean {

@@ -12,10 +12,12 @@ export function solveNQueens(n: number): string[][] {
         }
 
         for (let col = 0; col < n; col++) {
-            if (columns.has(col) || 
+            if (
+                columns.has(col) ||
                 posDiagonals.has(row + col) ||
                 negDiagonals.has(row - col)
-            ) continue;
+            )
+                continue;
 
             queens.push(col);
             columns.add(col);
@@ -29,17 +31,17 @@ export function solveNQueens(n: number): string[][] {
             posDiagonals.delete(row + col);
             negDiagonals.delete(row - col);
         }
-    }
+    };
     backtrack(0);
-    
-    return solutions.map(queens => 
-        queens.map(queen => {
+
+    return solutions.map((queens) =>
+        queens.map((queen) => {
             let row = "";
             for (let idx = 0; idx < n; idx++) {
                 if (idx === queen) row = `${row}${"Q"}`;
                 else row = `${row}${"."}`;
             }
             return row;
-        }
-    ));
-};
+        })
+    );
+}

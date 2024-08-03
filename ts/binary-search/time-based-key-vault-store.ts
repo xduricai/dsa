@@ -1,15 +1,15 @@
-export type TimeMapEntry = { value: string, timestamp: number };
+export type TimeMapEntry = { value: string; timestamp: number };
 
 export class TimeMap {
     keyStore: Map<string, TimeMapEntry[]>;
-    
+
     constructor() {
         this.keyStore = new Map();
     }
 
     set(key: string, value: string, timestamp: number) {
         const arr = this.keyStore.get(key);
-        
+
         if (!arr) this.keyStore.set(key, [{ value, timestamp }]);
         else arr.push({ value, timestamp });
     }
@@ -26,7 +26,7 @@ export class TimeMap {
             const mid = Math.floor((low + hi) / 2);
             if (arr[mid].timestamp === timestamp) return arr[mid].value;
 
-            if (arr[mid].timestamp < timestamp){
+            if (arr[mid].timestamp < timestamp) {
                 ret = arr[mid].value;
                 low = mid + 1;
             } else hi = mid - 1;

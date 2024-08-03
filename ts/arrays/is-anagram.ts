@@ -1,6 +1,6 @@
 export function isAnagramSort(s: string, t: string): boolean {
     return s.split("").sort().join("") === t.split("").sort().join("");
-};
+}
 
 export function isAnagramMap(s: string, t: string): boolean {
     if (s.length !== t.length) return false;
@@ -17,4 +17,4 @@ export function isAnagramMap(s: string, t: string): boolean {
         if (mapS.get(key) !== mapT.get(key)) return false;
     }
     return true;
-};
+}

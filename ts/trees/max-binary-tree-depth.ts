@@ -3,8 +3,8 @@ import { TreeNode } from "./tree-node";
 // recursive DFS
 export function maxDepth(root: TreeNode | null): number {
     if (!root) return 0;
-    return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));   
-};
+    return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+}
 
 // iterative DFS
 export function maxDepth2(root: TreeNode | null): number {
@@ -20,7 +20,7 @@ export function maxDepth2(root: TreeNode | null): number {
         if (node.right) stack.push({ node: node.right, depth: depth + 1 });
     }
     return max;
-};
+}
 
 // iterative BFS
 export function maxDepth3(root: TreeNode | null): number {
@@ -36,7 +36,7 @@ export function maxDepth3(root: TreeNode | null): number {
         queue.push({ node: node.right, depth: depth + 1 });
     }
     return max;
-};
+}
 
 // iterative BFS
 export function maxDepth4(root: TreeNode | null): number {
@@ -47,7 +47,7 @@ export function maxDepth4(root: TreeNode | null): number {
     while (queue.length) {
         depth++;
         const count = queue.length;
-        
+
         for (let iter = 0; iter < count; iter++) {
             const node = queue.shift();
             if (node.left) queue.push(node.left);
@@ -55,4 +55,4 @@ export function maxDepth4(root: TreeNode | null): number {
         }
     }
     return depth;
-};
+}

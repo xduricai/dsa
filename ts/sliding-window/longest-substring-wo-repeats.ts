@@ -14,4 +14,4 @@ export function lengthOfLongestSubstring(s: string): number {
         max = Math.max(max, right - left);
     }
     return max;
-};
+}

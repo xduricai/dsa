@@ -1,4 +1,7 @@
-export function combinationSum(candidates: number[], target: number): number[][] {
+export function combinationSum(
+    candidates: number[],
+    target: number
+): number[][] {
     const output = [];
     const current = [];
 
@@ -14,7 +17,7 @@ export function combinationSum(candidates: number[], target: number): number[][]
             backtrack(idx, sum + candidates[idx]);
             current.pop();
         }
-    }
+    };
     backtrack(0, 0);
     return output;
 }

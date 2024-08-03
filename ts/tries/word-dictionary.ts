@@ -28,7 +28,7 @@ export class WordDictionary {
         if (idx === word.length) {
             return node.isWord;
         }
-        if (word[idx] !== '.') {
+        if (word[idx] !== ".") {
             return this.dfs(node.children.get(word[idx]), idx + 1, word);
         }
 

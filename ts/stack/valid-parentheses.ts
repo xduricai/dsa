@@ -7,12 +7,13 @@ export function isValid(s: string) {
             continue;
         }
         const top = stack.shift();
-        
+
         if (
-            char === ")" && top === "(" || 
-            char === "}" && top === "{" || 
-            char === "]" && top === "["
-        ) continue;
+            (char === ")" && top === "(") ||
+            (char === "}" && top === "{") ||
+            (char === "]" && top === "[")
+        )
+            continue;
 
         return false;
     }

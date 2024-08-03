@@ -12,11 +12,11 @@ export function topKFrequent(nums: number[], k: number): number[] {
         arr[value - 1].push(key);
     }
 
-    for (let idx = nums.length-1; idx >= 0; idx--) {
+    for (let idx = nums.length - 1; idx >= 0; idx--) {
         for (let item of arr[idx]) {
             ret.push(item);
             if (ret.length === k) return ret;
         }
     }
     return ret;
-};
+}

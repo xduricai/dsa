@@ -1,7 +1,7 @@
 class _Node {
     val: number;
     neighbors: _Node[];
-    
+
     constructor(val = 0, neighbors = []) {
         this.val = val;
         this.neighbors = neighbors;
@@ -23,13 +23,13 @@ export function cloneGraph(node: _Node | null): _Node | null {
             copy.neighbors.push(dfs(child));
         }
         return copy;
-    }
+    };
     return dfs(node);
-};
+}
 
 export function cloneGraphAlt(node: _Node | null): _Node | null {
     if (!node) return null;
-    
+
     const nodeMap = new Map<_Node, _Node>();
     const root = new _Node(node.val, []);
 
@@ -45,7 +45,7 @@ export function cloneGraphAlt(node: _Node | null): _Node | null {
             }
             copy.neighbors.push(childCopy);
         }
-    }
+    };
     dfs(node, root);
     return root;
 }

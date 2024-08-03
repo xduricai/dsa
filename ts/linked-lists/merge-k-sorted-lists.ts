@@ -14,7 +14,7 @@ export function mergeKLists(lists: Array<ListNode | null>): ListNode | null {
         lists = merged;
     }
     return lists[0];
-};
+}
 
 function merge(list1: ListNode, list2: ListNode) {
     const preHead = new ListNode(0, null);

@@ -11,4 +11,4 @@ export function hasCycle(head: ListNode | null): boolean {
         slow = slow.next;
     }
     return false;
-};
+}

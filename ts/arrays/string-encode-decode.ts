@@ -22,7 +22,7 @@ export function decode(str: string) {
         const length = parseInt(lengthString);
         idx++;
 
-        ret.push(str.slice(idx, idx + length))
+        ret.push(str.slice(idx, idx + length));
         idx += length;
         lengthString = "";
     }

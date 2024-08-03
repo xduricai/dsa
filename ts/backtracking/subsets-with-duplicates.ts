@@ -17,7 +17,7 @@ export function subsetsWithDup(nums: number[]): number[][] {
             idx++;
         }
         backtrack(idx + 1);
-    }
+    };
     backtrack(0);
     return output;
 }

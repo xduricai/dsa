@@ -4,7 +4,7 @@ export function characterReplacement(s: string, k: number) {
     let max = 0;
     let left = 0;
 
-    for(let right = 0; right < s.length; right++) {
+    for (let right = 0; right < s.length; right++) {
         let idx = s.charCodeAt(right) - a;
         counts[idx]++;
 
@@ -18,7 +18,6 @@ export function characterReplacement(s: string, k: number) {
     return max;
 }
 
-
 export function characterReplacementOptimal(s: string, k: number) {
     const counts = new Array(26).fill(0);
     const a = "A".charCodeAt(0);
@@ -26,7 +25,7 @@ export function characterReplacementOptimal(s: string, k: number) {
     let left = 0;
     let maxF = 0;
 
-    for(let right = 0; right < s.length; right++) {
+    for (let right = 0; right < s.length; right++) {
         let idx = s.charCodeAt(right) - a;
         counts[idx]++;
         maxF = Math.max(maxF, counts[idx]);

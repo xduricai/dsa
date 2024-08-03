@@ -7,7 +7,7 @@ export function longestConsecutive(nums: number[]) {
         let seq = 1;
         let current = num - 1;
 
-        while(numSet.has(current)) {
+        while (numSet.has(current)) {
             current--;
             seq++;
         }

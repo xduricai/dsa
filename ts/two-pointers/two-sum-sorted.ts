@@ -3,9 +3,9 @@ export function twoSum(numbers: number[], target: number): number[] {
     let hi = numbers.length - 1;
 
     while (low < hi) {
-        if (numbers[low] + numbers[hi] === target) return [++low, ++hi]; 
+        if (numbers[low] + numbers[hi] === target) return [++low, ++hi];
         if (numbers[low] + numbers[hi] > target) hi--;
-        else low++; 
+        else low++;
     }
     return [-1, -1];
-};
+}

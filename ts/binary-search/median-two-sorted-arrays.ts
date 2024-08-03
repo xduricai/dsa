@@ -25,7 +25,7 @@ export function findMedianSortedArrays(nums1: number[], nums2: number[]) {
         const rightA = midA + 1 < a.length ? a[midA + 1] : Infinity;
         const leftB = midB >= 0 ? b[midB] : -Infinity;
         const rightB = midB + 1 < b.length ? b[midB + 1] : Infinity;
-    
+
         if (leftA <= rightB && leftB <= rightA) {
             if (total % 2 === 1) {
                 return Math.min(rightA, rightB);

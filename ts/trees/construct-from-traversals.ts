@@ -1,6 +1,9 @@
 import { TreeNode } from "./tree-node";
 
-export function buildTree(preorder: number[], inorder: number[]): TreeNode | null {
+export function buildTree(
+    preorder: number[],
+    inorder: number[]
+): TreeNode | null {
     if (!preorder.length) return null;
 
     const node = new TreeNode(preorder[0]);

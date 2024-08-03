@@ -4,10 +4,10 @@ class MinStack {
 
     push(val: number): void {
         this.stack.push(val);
-        
-        if (this.mins.length && this.mins[this.mins.length - 1] < val) 
+
+        if (this.mins.length && this.mins[this.mins.length - 1] < val)
             this.mins.push(this.mins[this.mins.length - 1]);
-        else this.mins.push(val); 
+        else this.mins.push(val);
     }
 
     pop(): void {

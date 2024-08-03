@@ -7,7 +7,7 @@ export function maxArea(heights: number[]) {
         if (heights[low] < heights[hi]) {
             const area = heights[low] * (hi - low);
             max = Math.max(area, max);
-            
+
             const curr = heights[low];
             while (heights[low] <= curr) {
                 low++;
@@ -15,12 +15,12 @@ export function maxArea(heights: number[]) {
         } else {
             const area = heights[hi] * (hi - low);
             max = Math.max(area, max);
-            
+
             const curr = heights[hi];
             while (heights[hi] <= curr) {
                 hi--;
             }
         }
     }
-return max;
+    return max;
 }

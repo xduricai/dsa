@@ -10,7 +10,6 @@ class Node {
     }
 }
 
-
 export function copyRandomList(head: Node) {
     const lookup = new Map<Node, Node>();
     let current = head;

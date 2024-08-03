@@ -9,6 +9,6 @@ export function binarySearch(nums: number[], target: number): number {
         if (nums[mid] > target) hi = mid;
         else low = mid + 1;
     }
-    
+
     return -1;
-};
+}

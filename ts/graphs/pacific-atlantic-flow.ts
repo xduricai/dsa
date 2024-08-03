@@ -1,11 +1,16 @@
 export function pacificAtlantic(heights: number[][]): number[][] {
     const ROWS = heights.length;
     const COLS = heights[0].length;
-    const dirs = [[-1, 0], [0, 1], [1, 0], [0, -1]];
+    const dirs = [
+        [-1, 0],
+        [0, 1],
+        [1, 0],
+        [0, -1],
+    ];
 
     const inBounds = (row: number, col: number) => {
         return row >= 0 && col >= 0 && row < ROWS && col < COLS;
-    }
+    };
 
     const dfs = (r: number, c: number, tiles: Set<string>) => {
         tiles.add(`${r}-${c}`);
@@ -14,11 +19,15 @@ export function pacificAtlantic(heights: number[][]): number[][] {
             const row = r + dr;
             const col = c + dc;
 
-            if (inBounds(row, col) && !tiles.has(`${row}-${col}`) && heights[r][c] <= heights[row][col]) {
+            if (
+                inBounds(row, col) &&
+                !tiles.has(`${row}-${col}`) &&
+                heights[r][c] <= heights[row][col]
+            ) {
                 dfs(row, col, tiles);
             }
         }
-    }
+    };
 
     const atl = new Set<string>();
     const pac = new Set<string>();
@@ -44,4 +53,4 @@ export function pacificAtlantic(heights: number[][]): number[][] {
         }
     }
     return output;
-};
+}

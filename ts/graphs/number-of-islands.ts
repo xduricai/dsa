@@ -1,12 +1,14 @@
 export function numIslands(grid: string[][]): number {
     const seen = Array(grid.length)
         .fill(null)
-        .map(_ => Array(grid[0].length).fill(false));
+        .map((_) => Array(grid[0].length).fill(false));
     let islands = 0;
 
     const inBounds = (row: number, col: number) => {
-        return row >= 0 && col >= 0 && row < grid.length && col < grid[0].length;
-    }
+        return (
+            row >= 0 && col >= 0 && row < grid.length && col < grid[0].length
+        );
+    };
 
     const dfs = (row: number, col: number) => {
         if (!inBounds(row, col) || seen[row][col] || grid[row][col] === "0") {
@@ -18,7 +20,7 @@ export function numIslands(grid: string[][]): number {
         dfs(row, col + 1);
         dfs(row + 1, col);
         dfs(row, col - 1);
-    }
+    };
 
     for (let row = 0; row < grid.length; row++) {
         for (let col = 0; col < grid[0].length; col++) {
@@ -33,4 +35,4 @@ export function numIslands(grid: string[][]): number {
         }
     }
     return islands;
-};
+}

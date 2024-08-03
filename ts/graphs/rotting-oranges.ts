@@ -1,8 +1,15 @@
 export function orangesRotting(grid: number[][]): number {
     const inBounds = (row: number, col: number) => {
-        return row >= 0 && col >= 0 && row < grid.length && col < grid[0].length;
-    }
-    const dirs = [[-1, 0], [0, 1], [1, 0], [0, -1]];
+        return (
+            row >= 0 && col >= 0 && row < grid.length && col < grid[0].length
+        );
+    };
+    const dirs = [
+        [-1, 0],
+        [0, 1],
+        [1, 0],
+        [0, -1],
+    ];
 
     const queue: [number, number][] = [];
     let fresh = 0;
@@ -42,4 +49,4 @@ export function orangesRotting(grid: number[][]): number {
 
     if (fresh > 0) return -1;
     return time;
-};
+}

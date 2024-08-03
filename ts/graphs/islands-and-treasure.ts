@@ -1,7 +1,9 @@
 export function islandsAndTreasure(grid: number[][]) {
     const inBounds = (row: number, col: number) => {
-        return row >= 0 && col >= 0 && row < grid.length && col < grid[0].length;
-    }
+        return (
+            row >= 0 && col >= 0 && row < grid.length && col < grid[0].length
+        );
+    };
 
     const queue = [];
     const seen = new Set<string>();
@@ -20,7 +22,11 @@ export function islandsAndTreasure(grid: number[][]) {
 
         for (let iter = 0; iter < len; iter++) {
             const [row, col] = queue.shift();
-            if (!inBounds(row, col) || grid[row][col] === -1 || seen.has(`${row}-${col}`)) {
+            if (
+                !inBounds(row, col) ||
+                grid[row][col] === -1 ||
+                seen.has(`${row}-${col}`)
+            ) {
                 continue;
             }
             grid[row][col] = distance;

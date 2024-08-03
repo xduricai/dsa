@@ -12,13 +12,13 @@ export function leastInterval(tasks: string[], n: number): number {
         counts[idx]--;
     }
 
-    for (let num of counts.filter(c => c < 0)) {
+    for (let num of counts.filter((c) => c < 0)) {
         heap.add(-num);
     }
 
     while (heap.length || queue.length) {
         time++;
-        
+
         if (heap.length) {
             const count = heap.delete() + 1;
             if (count) {
@@ -31,4 +31,4 @@ export function leastInterval(tasks: string[], n: number): number {
         }
     }
     return time;
-};
+}

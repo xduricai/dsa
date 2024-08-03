@@ -20,7 +20,7 @@ export function minEatingSpeed(piles: number[], h: number): number {
             continue;
         }
         best = mid;
-        max = mid - 1; 
+        max = mid - 1;
     }
     return best;
-};
+}

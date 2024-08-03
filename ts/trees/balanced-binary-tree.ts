@@ -2,7 +2,7 @@ import { TreeNode } from "./tree-node";
 
 export function isBalanced(root: TreeNode | null): boolean {
     return checkSubtree(root) !== false;
-};
+}
 
 function checkSubtree(node: TreeNode | null): number | false {
     if (!node) return 0;

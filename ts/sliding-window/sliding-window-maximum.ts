@@ -1,12 +1,15 @@
 export function maxSlidingWindow(nums: number[], k: number) {
     const output = [];
     const queue = [];
-    
+
     let left = 0;
     let right = 0;
 
     while (right < nums.length) {
-        while (queue.length > 0 && nums[queue[queue.length - 1]] < nums[right]) {
+        while (
+            queue.length > 0 &&
+            nums[queue[queue.length - 1]] < nums[right]
+        ) {
             queue.pop();
         }
         queue.push(right);

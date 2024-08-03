@@ -7,7 +7,8 @@ export function searchMatrix(matrix: number[][], target: number) {
     while (low <= hi) {
         const mid = Math.floor((low + hi) / 2);
 
-        if (target === matrix[mid][0] || target === matrix[mid][width - 1]) return true;
+        if (target === matrix[mid][0] || target === matrix[mid][width - 1])
+            return true;
         if (target > matrix[mid][0] && target < matrix[mid][width - 1]) {
             row = mid;
             break;

@@ -23,13 +23,13 @@ export function threeSum(nums: number[]): number[][] {
             if (sum > 0) {
                 hi--;
                 continue;
-            } 
+            }
             if (sum < 0) {
                 low++;
                 continue;
-            } 
+            }
             ret.push([nums[idx], nums[low], nums[hi]]);
-            low++;                
+            low++;
         }
     }
     return ret;

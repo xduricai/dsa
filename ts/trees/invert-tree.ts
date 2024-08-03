@@ -10,4 +10,4 @@ export function invertTree(root: TreeNode | null): TreeNode | null {
     invertTree(root.left);
     invertTree(root.right);
     return root;
-};
+}

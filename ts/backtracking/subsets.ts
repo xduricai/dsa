@@ -12,7 +12,7 @@ export function subsets(nums: number[]): number[][] {
         backtrack(idx + 1);
         current.pop();
         backtrack(idx + 1);
-    }
+    };
     backtrack(0);
     return output;
 }

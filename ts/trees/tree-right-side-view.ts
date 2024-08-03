@@ -8,7 +8,7 @@ export function rightSideView(root: TreeNode | null): number[] {
         let count = queue.length;
         let right = null;
 
-        while(count) {
+        while (count) {
             count--;
             const node = queue.shift();
             if (!node) continue;

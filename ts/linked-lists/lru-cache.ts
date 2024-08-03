@@ -4,7 +4,7 @@ class Node {
     previous: Node;
     next: Node;
 
-    constructor (key: number, value: number, previous: Node, next: Node) {
+    constructor(key: number, value: number, previous: Node, next: Node) {
         this.key = key;
         this.value = value;
         this.previous = previous;
@@ -29,7 +29,7 @@ class LRUCache {
 
         this.detach(node);
         this.prepend(node);
-        return node.value;        
+        return node.value;
     }
 
     put(key: number, value: number): void {

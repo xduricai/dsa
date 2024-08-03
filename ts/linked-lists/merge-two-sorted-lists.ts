@@ -1,6 +1,9 @@
 import { ListNode } from "./list-node";
 
-export function mergeTwoLists(list1: ListNode | null, list2: ListNode | null): ListNode | null {
+export function mergeTwoLists(
+    list1: ListNode | null,
+    list2: ListNode | null
+): ListNode | null {
     let a = list1;
     let b = list2;
     let head = new ListNode();
@@ -18,4 +21,4 @@ export function mergeTwoLists(list1: ListNode | null, list2: ListNode | null): L
         }
     }
     return head.next;
-};
+}

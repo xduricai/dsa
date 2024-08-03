@@ -11,4 +11,4 @@ function carFleet(target: number, position: number[], speed: number[]): number {
         }
     }
     return stack.length;
-};
+}

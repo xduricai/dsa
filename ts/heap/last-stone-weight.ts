@@ -2,7 +2,7 @@ import { Heap } from "./heap";
 
 export function lastStoneWeight(stones: number[]) {
     const heap = new Heap<number>();
-    
+
     for (let stone of stones) {
         heap.add(-stone);
     }
@@ -13,5 +13,5 @@ export function lastStoneWeight(stones: number[]) {
         const res = Math.abs(a - b);
         if (res) heap.add(-res);
     }
-    return -heap.peek() || 0; 
+    return -heap.peek() || 0;
 }

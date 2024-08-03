@@ -11,4 +11,4 @@ export function reverseList(head: ListNode | null): ListNode | null {
         head = next;
     }
     return start;
-};
+}

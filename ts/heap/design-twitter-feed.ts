@@ -1,14 +1,14 @@
 import { Heap } from "./heap";
 
 export class Twitter {
-    tweetMap = new Map<number, { id: number, time: number }[]>();
+    tweetMap = new Map<number, { id: number; time: number }[]>();
     followMap = new Map<number, Set<number>>();
     time = 0;
 
     postTweet(userId: number, tweetId: number): void {
         const tweets = this.tweetMap.get(userId);
         const tweet = { id: tweetId, time: this.time };
-        
+
         if (tweets) {
             tweets.push(tweet);
         } else {
@@ -30,14 +30,19 @@ export class Twitter {
             heap.add([this.time - latest.time, latest.id, followee, 2]);
         }
 
-        while(feed.length < 10 && heap.length) {
+        while (feed.length < 10 && heap.length) {
             const [_, tweetId, authorId, offset] = heap.delete();
             feed.push(tweetId);
 
             const tweets = this.tweetMap.get(authorId);
             if (tweets.length - offset >= 0) {
                 const latest = tweets[tweets.length - offset];
-                heap.add([this.time - latest.time, latest.id, authorId, offset + 1]);
+                heap.add([
+                    this.time - latest.time,
+                    latest.id,
+                    authorId,
+                    offset + 1,
+                ]);
             }
         }
 

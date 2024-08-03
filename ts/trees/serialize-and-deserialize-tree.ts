@@ -6,7 +6,7 @@ export function serialize(root: TreeNode | null): string {
 
     while (queue.length) {
         const node = queue.shift();
-        
+
         if (!node) {
             output.push(NaN);
             continue;
@@ -18,7 +18,7 @@ export function serialize(root: TreeNode | null): string {
 }
 
 export function deserialize(data: string): TreeNode | null {
-    const values = data.split(",").map(val => parseInt(val));
+    const values = data.split(",").map((val) => parseInt(val));
     const rootVal = values.shift();
     if (isNaN(rootVal)) return null;
 

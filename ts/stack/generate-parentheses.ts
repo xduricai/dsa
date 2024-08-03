@@ -4,7 +4,7 @@ export function generateParenthesis(n: number) {
 
     const backtrack = (open: number, closed: number) => {
         if (open === closed && closed === n) {
-            ret.push(stack.join(""))
+            ret.push(stack.join(""));
             return;
         }
 
@@ -19,7 +19,7 @@ export function generateParenthesis(n: number) {
             backtrack(open, closed + 1);
             stack.pop();
         }
-    }
-    backtrack(0, 0)
+    };
+    backtrack(0, 0);
     return ret;
 }

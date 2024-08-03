@@ -1,9 +1,9 @@
 export function groupAnagrams(strs: string[]) {
     const map = new Map<string, string[]>();
-    
+
     for (let str of strs) {
         const counts = Array(26).fill(0);
-        
+
         for (let char of str.split("")) {
             counts[char.charCodeAt(0) - 97]++;
         }
@@ -14,11 +14,11 @@ export function groupAnagrams(strs: string[]) {
         map.set(key, items);
     }
     return [...map.values()];
-};
+}
 
 export function groupAnagramsAlt(strs: string[]): string[][] {
     const map = new Map<string, string[]>();
-    
+
     for (let str of strs) {
         const sorted = str.split("").sort().join("");
         const group = map.get(sorted);
@@ -30,4 +30,4 @@ export function groupAnagramsAlt(strs: string[]): string[][] {
         group.push(str);
     }
     return [...map.values()];
-};
+}

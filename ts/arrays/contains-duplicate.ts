@@ -6,4 +6,4 @@ export function containsDuplicate(nums: number[]): boolean {
         numSet.add(num);
     }
     return false;
-};
+}

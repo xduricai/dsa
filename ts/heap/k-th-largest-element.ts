@@ -18,7 +18,7 @@ export function findKthLargest(nums: number[], k: number): number {
         const temp = nums[ptr];
         nums[ptr] = nums[right];
         nums[right] = temp;
-        
+
         if (ptr > k) {
             return quickSelect(left, ptr - 1);
         }
@@ -26,9 +26,9 @@ export function findKthLargest(nums: number[], k: number): number {
             return quickSelect(ptr + 1, right);
         }
         return nums[ptr];
-    }
+    };
     return quickSelect(0, nums.length - 1);
-};
+}
 
 export function findKthLargestAlt(nums: number[], k: number): number {
     const heap = new Heap<number>();
@@ -39,6 +39,6 @@ export function findKthLargestAlt(nums: number[], k: number): number {
     for (let iter = 0; iter < nums.length - k; iter++) {
         heap.delete();
     }
-    
+
     return heap.peek();
-};
+}

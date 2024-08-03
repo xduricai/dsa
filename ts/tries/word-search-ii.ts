@@ -12,8 +12,10 @@ export function findWords(board: string[][], words: string[]): string[] {
     }
 
     const inBounds = (row: number, col: number) => {
-        return row >= 0 && col >= 0 && row < board.length && col < board[0].length;
-    }
+        return (
+            row >= 0 && col >= 0 && row < board.length && col < board[0].length
+        );
+    };
 
     const dfs = (row: number, col: number, node: TrieNode) => {
         const pos = `${row}-${col}`;
@@ -39,13 +41,13 @@ export function findWords(board: string[][], words: string[]): string[] {
         dfs(row, col + 1, child);
         dfs(row + 1, col, child);
         dfs(row, col - 1, child);
-        
+
         seen.delete(pos);
         current.pop();
-    }
+    };
 
-    for(let row = 0; row < board.length; row++) {
-        for(let col = 0; col < board[0].length; col++) {
+    for (let row = 0; row < board.length; row++) {
+        for (let col = 0; col < board[0].length; col++) {
             dfs(row, col, trie.root);
         }
     }

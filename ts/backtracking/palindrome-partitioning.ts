@@ -14,11 +14,11 @@ export function partition(s: string): string[][] {
             backtrack(idx + 1);
             current.pop();
         }
-    }
+    };
 
     backtrack(0);
     return output;
-};
+}
 
 function isPalindrome(s: string, left: number, right: number) {
     while (left < right) {

@@ -14,7 +14,7 @@ export function maxPathSum(root: TreeNode | null): number {
         if (right > 0) nodeMax += right;
         max = Math.max(nodeMax, max);
         return node.val + Math.max(left, right, 0);
-    }
+    };
     walk(root);
     return max;
 }

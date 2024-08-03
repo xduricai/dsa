@@ -5,7 +5,7 @@ export function largestRectangleArea(heights: number[]) {
 
     for (let idx = 1; idx < heights.length; idx++) {
         const current = { start: idx, height: heights[idx] };
-        
+
         while (stack.length && stack[stack.length - 1].height > heights[idx]) {
             const top = stack.pop();
             current.start = top.start;

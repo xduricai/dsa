@@ -9,7 +9,7 @@ export function letterCombinations(digits: string): string[] {
         ["6", "mno"],
         ["7", "pqrs"],
         ["8", "tuv"],
-        ["9", "wxyz"]
+        ["9", "wxyz"],
     ]);
     const output = [];
 
@@ -24,8 +24,8 @@ export function letterCombinations(digits: string): string[] {
             backtrack(idx + 1, current);
             current = current.slice(0, current.length - 1);
         }
-    }
+    };
 
     if (digits) backtrack(0, "");
     return output;
-};
+}

@@ -1,4 +1,7 @@
-export function combinationSum2(candidates: number[], target: number): number[][] {
+export function combinationSum2(
+    candidates: number[],
+    target: number
+): number[][] {
     candidates.sort((a, b) => a - b);
     const output: number[][] = [];
     const current: number[] = [];
@@ -12,7 +15,6 @@ export function combinationSum2(candidates: number[], target: number): number[][
             return;
         }
 
-
         let previous = null;
         for (let idx = start; idx < candidates.length; idx++) {
             if (candidates[idx] === previous) continue;
@@ -23,12 +25,15 @@ export function combinationSum2(candidates: number[], target: number): number[][
 
             previous = candidates[idx];
         }
-    }
+    };
     backtrack(0, 0);
     return output;
-};
+}
 
-export function combinationSum2Alt(candidates: number[], target: number): number[][] {
+export function combinationSum2Alt(
+    candidates: number[],
+    target: number
+): number[][] {
     candidates.sort((a, b) => a - b);
     const output = [];
     const current = [];
@@ -38,7 +43,7 @@ export function combinationSum2Alt(candidates: number[], target: number): number
             output.push([...current]);
             return;
         }
-        
+
         if (sum > target || idx >= candidates.length) {
             return;
         }
@@ -47,11 +52,14 @@ export function combinationSum2Alt(candidates: number[], target: number): number
         backtrack(idx + 1, sum + candidates[idx]);
         current.pop();
 
-        while (idx + 1 < candidates.length && candidates[idx] === candidates[idx + 1]) {
+        while (
+            idx + 1 < candidates.length &&
+            candidates[idx] === candidates[idx + 1]
+        ) {
             idx++;
         }
         backtrack(idx + 1, sum);
-    }
+    };
     backtrack(0, 0);
     return output;
-};
+}

@@ -3,7 +3,7 @@ import { Heap } from "./heap";
 export class KthLargest {
     heap: Heap<number>;
     k: number;
-    
+
     constructor(k: number, nums: number[]) {
         this.heap = new Heap<number>();
         this.k = k;

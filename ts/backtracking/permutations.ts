@@ -14,7 +14,7 @@ export function permute(nums: number[]): number[][] {
             backtrack(elements.filter((_, eIdx) => eIdx !== idx));
             current.pop();
         }
-    }
+    };
     backtrack(nums);
     return perms;
 }

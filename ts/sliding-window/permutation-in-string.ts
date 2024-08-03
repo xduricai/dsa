@@ -24,17 +24,13 @@ export function checkInclusion(s1: string, s2: string) {
 
         charIdx = s2[right].charCodeAt(0) - a;
         counts2[charIdx]++;
-        if (counts1[charIdx] === counts2[charIdx])
-            matches++;
-        else if (counts1[charIdx] + 1 === counts2[charIdx])
-            matches--;
+        if (counts1[charIdx] === counts2[charIdx]) matches++;
+        else if (counts1[charIdx] + 1 === counts2[charIdx]) matches--;
 
         charIdx = s2[left].charCodeAt(0) - a;
         counts2[charIdx]--;
-        if (counts1[charIdx] === counts2[charIdx])
-            matches++;
-        else if (counts1[charIdx] - 1 === counts2[charIdx])
-            matches--;
+        if (counts1[charIdx] === counts2[charIdx]) matches++;
+        else if (counts1[charIdx] - 1 === counts2[charIdx]) matches--;
 
         left++;
         right++;
@@ -83,7 +79,7 @@ export function checkInclusionMap(s1: string, s2: string): boolean {
         right++;
     }
     return matches === map1.size;
-};
+}
 
 export function checkInclusionAlt(s1: string, s2: string) {
     const sorted = s1.split("").sort().join("");
