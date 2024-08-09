@@ -1,8 +1,8 @@
 export function minCostClimbingStairs(cost: number[]) {
-    const dp = [cost[0], cost[1]];
+    const dp = [0, 0];
 
-    for (let idx = 2; idx < cost.length; idx++) {
-        const sum = cost[idx] + Math.min(dp[0], dp[1]);
+    for (let stair of cost) {
+        const sum = stair + Math.min(dp[0], dp[1]);
         dp[0] = dp[1];
         dp[1] = sum;
     }
