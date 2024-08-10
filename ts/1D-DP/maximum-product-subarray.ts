@@ -1,5 +1,5 @@
 export function maxProduct(nums: number[]): number {
-    let res = nums[0];
+    let bestMax = nums[0];
     let currMin = 1;
     let currMax = 1;
 
@@ -9,7 +9,7 @@ export function maxProduct(nums: number[]): number {
 
         currMin = Math.min(newMin, newMax, num);
         currMax = Math.max(newMin, newMax, num);
-        res = Math.max(res, currMax);
+        bestMax = Math.max(bestMax, currMax);
     }
-    return res;
+    return bestMax;
 }
