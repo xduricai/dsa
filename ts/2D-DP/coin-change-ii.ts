@@ -3,10 +3,8 @@ export function change(amount: number, coins: number[]): number {
     dp[0] = 1;
 
     for (const coin of coins) {
-        for (let idx = 1; idx <= amount; idx++) {
-            if (coin <= idx) {
-                dp[idx] += dp[idx - coin];
-            }
+        for (let idx = coin; idx <= amount; idx++) {
+            dp[idx] += dp[idx - coin];
         }
     }
     return dp[amount];
