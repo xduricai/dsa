@@ -1,4 +1,32 @@
 export function mergeTriplets(triplets: number[][], target: number[]): boolean {
+    const reached = new Set();
+
+    for (const triplet of triplets) {
+        if (
+            triplet[0] > target[0] ||
+            triplet[1] > target[1] ||
+            triplet[2] > target[2]
+        ) {
+            continue;
+        }
+
+        for (let idx = 0; idx < 3; idx++) {
+            if (triplet[idx] === target[idx]) {
+                reached.add(idx);
+            }
+        }
+
+        if (reached.size === 3) {
+            return true;
+        }
+    }
+    return false;
+}
+
+export function mergeTripletsAlt(
+    triplets: number[][],
+    target: number[]
+): boolean {
     const current = [0, 0, 0];
 
     for (const [first, second, third] of triplets) {
