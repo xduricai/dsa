@@ -22,9 +22,9 @@ export function findItinerary(tickets: string[][]): string[] {
             const neighbor = neighbors.shift();
             dfs(neighbor);
         }
-        path.push(source);
+        path.unshift(source);
     };
 
     dfs("JFK");
-    return path.reverse();
+    return path;
 }
