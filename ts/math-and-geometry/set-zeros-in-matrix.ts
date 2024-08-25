@@ -17,6 +17,7 @@ export function setZeroes(matrix: number[][]): void {
         }
     }
 
+    // set to 0 if corresponding row/col is all 0's
     for (let row = 1; row < ROWS; row++) {
         for (let col = 1; col < COLS; col++) {
             if (matrix[0][col] === 0 || matrix[row][0] === 0) {
@@ -25,11 +26,13 @@ export function setZeroes(matrix: number[][]): void {
         }
     }
 
+    // 0 first column if needed
     if (matrix[0][0] === 0) {
         for (let row = 0; row < ROWS; row++) {
             matrix[row][0] = 0;
         }
     }
+    // 0 first row if needed
     if (firstRow) {
         for (let col = 0; col < COLS; col++) {
             matrix[0][col] = 0;
