@@ -8,7 +8,7 @@ export function networkDelayTime(
     const visited = new Set<number>();
     const adjList = new Map<number, [number, number][]>();
     const heap = new Heap<[number, number]>();
-    let total = 0;
+    let result = 0;
 
     for (const [source, destination, cost] of times) {
         const neighbors = adjList.get(source);
@@ -26,7 +26,7 @@ export function networkDelayTime(
             continue;
         }
         visited.add(node);
-        total = Math.max(total, cost);
+        result = Math.max(result, cost);
 
         for (const [neighborCost, neighbor] of adjList.get(node) || []) {
             if (visited.has(neighbor)) {
@@ -35,5 +35,5 @@ export function networkDelayTime(
             heap.add([cost + neighborCost, neighbor]);
         }
     }
-    return visited.size === n ? total : -1;
+    return visited.size === n ? result : -1;
 }
