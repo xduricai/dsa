@@ -1,7 +1,7 @@
 import { Pair } from "./pair";
 
 export function quickSort(pairs: Pair[]) {
-    this.qs(pairs, 0, pairs.length - 1);
+    qs(pairs, 0, pairs.length - 1);
     return pairs;
 }
 
@@ -25,6 +25,6 @@ function qs(pairs: Pair[], left: number, right: number) {
     pairs[right] = pairs[pIdx];
     pairs[pIdx] = pivot;
 
-    this.qs(pairs, left, pIdx - 1);
-    this.qs(pairs, pIdx + 1, right);
+    qs(pairs, left, pIdx - 1);
+    qs(pairs, pIdx + 1, right);
 }
