@@ -1,7 +1,4 @@
-type Pair = {
-    key: any;
-    number: any;
-};
+import { Pair } from "./pair";
 
 export function insertionSort(pairs: Pair[]) {
     const states: Pair[][] = [];
