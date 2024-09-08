@@ -1,7 +1,7 @@
 export function countPaths(grid: number[][]) {
     const ROWS = grid.length;
     const COLS = grid[0].length;
-    const seen = new Set();
+    const seen = new Set<string>();
 
     const inBounds = (row: number, col: number) => {
         return row >= 0 && col >= 0 && row < ROWS && col < COLS;
