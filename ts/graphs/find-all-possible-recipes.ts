@@ -4,6 +4,52 @@ export function findAllRecipes(
     ingredients: string[][],
     supplies: string[]
 ): string[] {
+    const ingredientMap = new Map<string, string[]>();
+    const visited = new Set<string>(supplies);
+    const cycle = new Set<string>();
+    const output = [];
+
+    for (let idx = 0; idx < recipes.length; idx++) {
+        ingredientMap.set(recipes[idx], ingredients[idx]);
+    }
+
+    const dfs = (recipe: string) => {
+        if (visited.has(recipe)) {
+            return true;
+        }
+        if (cycle.has(recipe)) {
+            return false;
+        }
+
+        const ings = ingredientMap.get(recipe);
+        if (!ings) {
+            return false;
+        }
+        cycle.add(recipe);
+
+        for (const ing of ings) {
+            if (!dfs(ing)) {
+                return false;
+            }
+        }
+        cycle.delete(recipe);
+        visited.add(recipe);
+        output.push(recipe);
+        return true;
+    };
+
+    for (const recipe of recipes) {
+        dfs(recipe);
+    }
+    return output;
+}
+
+// bottom up approach
+export function findAllRecipesAlt(
+    recipes: string[],
+    ingredients: string[][],
+    supplies: string[]
+): string[] {
     const graph = new Map<string, string[]>();
     const degree = new Map<string, number>();
 
