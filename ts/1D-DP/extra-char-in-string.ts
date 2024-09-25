@@ -1,5 +1,5 @@
 export function minExtraChar(s: string, dictionary: string[]): number {
-    const dp = Array(s.length);
+    const dp = Array(s.length + 1);
 
     for (let idx = 0; idx <= s.length; idx++) {
         dp[idx] = idx;
@@ -12,9 +12,8 @@ export function minExtraChar(s: string, dictionary: string[]): number {
 
             if (slice.startsWith(word)) {
                 dp[end] = Math.min(dp[end], dp[idx - 1]);
-            } else {
-                dp[idx] = Math.min(dp[idx], dp[idx - 1] + 1);
             }
+            dp[idx] = Math.min(dp[idx], dp[idx - 1] + 1);
         }
     }
     return dp[s.length];
