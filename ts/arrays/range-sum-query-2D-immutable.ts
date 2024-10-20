@@ -18,7 +18,6 @@ export class NumMatrix {
                     this.prefix[row][col];
             }
         }
-        console.log(this.prefix);
     }
 
     sumRegion(row1: number, col1: number, row2: number, col2: number): number {
