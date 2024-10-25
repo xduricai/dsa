@@ -15,6 +15,10 @@ export function removeSubfolders(folder: string[]): string[] {
         for (let idx = 1; idx < dirs.length; idx++) {
             const char = dirs[idx];
 
+            if (current.isFolder) {
+                break;
+            }
+
             if (current.children.has(char)) {
                 current = current.children.get(char);
                 continue;
