@@ -46,16 +46,8 @@ export class WordFilter {
     f(pref: string, suff: string): number {
         let current = this.trie;
 
-        for (const char of `${suff}-`) {
+        for (const char of `${suff}-${pref}`) {
             if (current.children.has(char)) {
-                current = current.children.get(char);
-            } else {
-                return -1;
-            }
-        }
-
-        for (const char of pref) {
-            if (current.children.get(char)) {
                 current = current.children.get(char);
             } else {
                 return -1;
