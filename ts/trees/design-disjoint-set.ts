@@ -20,7 +20,7 @@ export class UnionFind {
 
         while (current !== parent) {
             this.parents.set(current, this.parents.get(parent));
-            current = parent;
+            current = this.parents.get(current);
             parent = this.parents.get(current);
         }
         return current;
