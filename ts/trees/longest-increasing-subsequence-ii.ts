@@ -47,9 +47,12 @@ export function lengthOfLIS(nums: number[], k: number): number {
     const tree = new SegmentTree(Math.max(...nums));
     let res = 1;
 
-    for (const num of nums) {
-        const premax = tree.query(Math.max(0, num - k - 1), num - 1) + 1;
-        tree.update(num - 1, premax);
+    for (let num of nums) {
+        // decrement by 1 because of 0-based indexing
+        num--;
+
+        const premax = tree.query(Math.max(0, num - k), num) + 1;
+        tree.update(num, premax);
         res = Math.max(res, premax);
     }
 
