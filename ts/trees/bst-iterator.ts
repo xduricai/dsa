@@ -1,7 +1,7 @@
 import { TreeNode } from "./tree-node";
 
 export class BSTIterator {
-    stack: (TreeNode | null)[] = [];
+    stack: TreeNode[] = [];
     current: TreeNode | null;
 
     constructor(root: TreeNode | null) {
@@ -14,12 +14,10 @@ export class BSTIterator {
             this.current = this.current.left;
         }
 
-        while (!this.current) {
-            this.current = this.stack.pop();
-        }
-
+        this.current = this.stack.pop();
         const val = this.current.val;
         this.current = this.current.right;
+
         return val;
     }
 

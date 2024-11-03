@@ -12,9 +12,11 @@ export function shortestPalindrome(s: string): string {
     let power = 1;
 
     for (let idx = 0; idx < s.length; idx++) {
+        // appending digits
         prefix = (prefix * BASE) % MOD;
         prefix += getValue(s[idx]);
 
+        // prepending digits
         suffix = (suffix + getValue(s[idx]) * power) % MOD;
         power = (power * BASE) % MOD;
 
