@@ -8,12 +8,9 @@ export function minimumSpanningTree(
     let total = 0;
 
     for (const [src, dst, cost] of edges) {
-        if (uf.find(src) === uf.find(dst)) {
-            continue;
+        if (uf.union(src, dst)) {
+            total += cost;
         }
-
-        uf.union(src, dst);
-        total += cost;
     }
 
     if (uf.size !== 1) {
