@@ -12,11 +12,11 @@ export function topologicalSort(n: number, edges: number[][]): number[] {
     }
 
     const output = [];
-    const seen = new Set<number>();
+    const visited = new Set<number>();
     const cycle = new Set<number>();
 
     const dfs = (node: number) => {
-        if (seen.has(node)) {
+        if (visited.has(node)) {
             return true;
         }
         if (cycle.has(node)) {
@@ -32,7 +32,7 @@ export function topologicalSort(n: number, edges: number[][]): number[] {
         }
 
         cycle.delete(node);
-        seen.add(node);
+        visited.add(node);
         output.push(node);
 
         return true;
