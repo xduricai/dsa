@@ -1,3 +1,4 @@
+// takes in the current node, the output array, an adjacency list, a visited nodes set and a cycle detection set
 function topologicalSort(
     node: number,
     sortOrder: number[],
