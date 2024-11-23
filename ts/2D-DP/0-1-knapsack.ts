@@ -1,5 +1,38 @@
-// true Dp
+// true DP, optimal space complexity O(m)
 export function maximumProfit(
+    profit: number[],
+    weight: number[],
+    capacity: number
+) {
+    let previousDP: number[] = Array(capacity + 1).fill(0);
+
+    for (let cap = 0; cap <= capacity; cap++) {
+        if (weight[0] <= cap) {
+            previousDP[cap] = profit[0];
+        }
+    }
+
+    for (let item = 1; item < profit.length; item++) {
+        const currentDP = Array(capacity + 1).fill(0);
+
+        for (let cap = 1; cap <= capacity; cap++) {
+            const skip = previousDP[cap];
+            let include = 0;
+
+            if (weight[item] <= cap) {
+                include = profit[item] + previousDP[cap - weight[item]];
+            }
+            currentDP[cap] = Math.max(skip, include);
+        }
+
+        previousDP = currentDP;
+    }
+
+    return previousDP[capacity];
+}
+
+// DP, suboptimal space complexity O(n * m)
+export function maximumProfitDP(
     profit: number[],
     weight: number[],
     capacity: number
