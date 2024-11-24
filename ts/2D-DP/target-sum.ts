@@ -1,4 +1,26 @@
+// DP
 export function findTargetSumWays(nums: number[], target: number): number {
+    let currentCounts = new Map<number, number>([[0, 1]]);
+
+    for (const num of nums) {
+        const nextCounts = new Map<number, number>();
+
+        for (const [sum, count] of currentCounts.entries()) {
+            const add = nextCounts.get(sum + num) || 0;
+            nextCounts.set(sum + num, add + count);
+
+            const subtract = nextCounts.get(sum - num) || 0;
+            nextCounts.set(sum - num, subtract + count);
+        }
+
+        currentCounts = nextCounts;
+    }
+
+    return currentCounts.get(target) || 0;
+}
+
+// DFS + memoization
+export function findTargetSumWaysAlt(nums: number[], target: number): number {
     const dp = new Map<string, number>();
 
     const dfs = (idx: number, sum: number) => {
