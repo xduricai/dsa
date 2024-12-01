@@ -1,6 +1,7 @@
+// Use cache if asked to find highest importance employee
+// Use set if subordinates can be shared between employees
 export function getImportance(employees: Employee[], id: number): number {
     const people = new Map<number, Employee>();
-    let max = -Infinity;
 
     const dfs = (id: number) => {
         const person = people.get(id);
