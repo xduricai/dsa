@@ -1,4 +1,52 @@
+// DFS solution
 export function decodeString(s: string): string {
+    const [result, _] = parseNext(s, 0);
+    return result;
+}
+
+// Recursive branch
+function parseNext(s: string, start: number): [string, number] {
+    let output = "";
+    let num = "";
+
+    for (let idx = start; idx < s.length; idx++) {
+        if (isNum(s[idx])) {
+            num = `${num}${s[idx]}`;
+        } else if (s[idx] === "[") {
+            const [result, end] = parseNext(s, idx + 1);
+            const repeats = parseInt(num) || 1;
+            output = `${output}${result.repeat(repeats)}`;
+
+            idx = end;
+            num = "";
+        } else if (s[idx] === "]") {
+            return [output, idx];
+        } else {
+            output = `${output}${s[idx]}`;
+        }
+    }
+
+    return [output, s.length];
+}
+
+function isNum(char: string) {
+    const code = char.charCodeAt(0);
+    const ZERO = "0".charCodeAt(0);
+    const NINE = "9".charCodeAt(0);
+
+    return code >= ZERO && code <= NINE;
+}
+
+function fromRange(char: string, start: string, end: string) {
+    const code = char.charCodeAt(0);
+    const START = start.charCodeAt(0);
+    const END = end.charCodeAt(0);
+
+    return code >= START && code <= END;
+}
+
+// Stack solution 1
+export function decodeStringAlt1(s: string): string {
     const stack = [];
     let currentStr = "";
     let currentNum = "";
@@ -24,15 +72,8 @@ export function decodeString(s: string): string {
     return currentStr;
 }
 
-function isNum(char: string) {
-    const code = char.charCodeAt(0);
-    const ZERO = "0".charCodeAt(0);
-    const NINE = "9".charCodeAt(0);
-
-    return code >= ZERO && code <= NINE;
-}
-
-export function decodeStringAlt(s: string): string {
+// Stack solution 2
+export function decodeStringAlt2(s: string): string {
     const numStack = [];
     const charStack = [""];
     let currentNum = "";
@@ -59,12 +100,4 @@ export function decodeStringAlt(s: string): string {
     }
 
     return charStack.pop();
-}
-
-function fromRange(char: string, start: string, end: string) {
-    const code = char.charCodeAt(0);
-    const START = start.charCodeAt(0);
-    const END = end.charCodeAt(0);
-
-    return code >= START && code <= END;
 }
