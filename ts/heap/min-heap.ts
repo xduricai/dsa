@@ -4,7 +4,7 @@ class MinHeap {
     constructor(data: number[] = []) {
         this.data = data;
 
-        if (data.length > 2) {
+        if (data.length > 1) {
             this.heapify(this.data);
         }
     }
