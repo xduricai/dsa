@@ -16,19 +16,19 @@ export function maxKDivisibleComponents(
     }
 
     const dfs = (node: number, prev: number) => {
-        for (const child of adjList.get(node) || []) {
-            if (child === prev) {
-                continue;
-            }
+        let sum = values[node];
 
-            dfs(child, node);
-            values[node] += values[child];
+        for (const child of adjList.get(node) || []) {
+            if (child !== prev) {
+                sum += dfs(child, node);
+            }
         }
 
-        if (values[node] % k === 0) {
-            values[node] = 0;
+        if (sum % k === 0) {
             count++;
         }
+
+        return sum;
     };
 
     dfs(0, -1);
