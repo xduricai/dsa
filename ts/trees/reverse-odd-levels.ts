@@ -1,6 +1,24 @@
 import { TreeNode } from "./tree-node";
 
 export function reverseOddLevels(root: TreeNode | null): TreeNode | null {
+    if (root?.left) {
+        reverse(root.left, root.right, true);
+    }
+    return root;
+}
+
+function reverse(left: TreeNode, right: TreeNode, isOdd: boolean) {
+    if (isOdd) {
+        [left.val, right.val] = [right.val, left.val];
+    }
+
+    if (left?.left) {
+        reverse(left.left, right.right, !isOdd);
+        reverse(left.right, right.left, !isOdd);
+    }
+}
+
+export function reverseOddLevelsAlt(root: TreeNode | null): TreeNode | null {
     let queue = [root];
     let isOdd = false;
 
