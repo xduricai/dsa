@@ -1,4 +1,61 @@
+// memory optimized optimal solution
 export function maxSumOfThreeSubarrays(nums: number[], k: number): number[] {
+    // total number of possible subarrays
+    const N = nums.length - k + 1;
+    // sums of all possible subarrays
+    const sums = Array(N).fill(0);
+    // start indices of the max subarray sums from the left
+    const maxLeft = Array(N).fill(0);
+    // start indices of the max subarray sums from the right
+    const maxRight = Array(N).fill(N - 1);
+
+    let sum = 0;
+    // compute all possible subarray sums
+    for (let idx = 0; idx < nums.length; idx++) {
+        sum += nums[idx];
+
+        if (idx >= k) {
+            sum -= nums[idx - k];
+        }
+
+        if (idx + 1 >= k) {
+            sums[idx + 1 - k] = sum;
+        }
+    }
+
+    // poulate the max left/right arrays
+    for (let idx = 1; idx < N; idx++) {
+        if (sums[maxLeft[idx - 1]] < sums[idx]) {
+            maxLeft[idx] = idx;
+        } else {
+            maxLeft[idx] = maxLeft[idx - 1];
+        }
+
+        if (sums[maxRight[N - idx]] <= sums[N - idx - 1]) {
+            maxRight[N - idx - 1] = N - idx - 1;
+        } else {
+            maxRight[N - idx - 1] = maxRight[N - idx];
+        }
+    }
+
+    let maxSum = 0;
+    let result = [];
+
+    // find the max sum and its associated array
+    for (let idx = k; idx < N - k; idx++) {
+        const sum =
+            sums[maxLeft[idx - k]] + sums[idx] + sums[maxRight[idx + k]];
+
+        if (sum > maxSum) {
+            maxSum = sum;
+            result = [maxLeft[idx - k], idx, maxRight[idx + k]];
+        }
+    }
+
+    return result;
+}
+
+export function maxSumOfThreeSubarraysAlt(nums: number[], k: number): number[] {
     // total number of possible subarrays
     const N = nums.length - k + 1;
     // sums of all possible subarrays
@@ -61,7 +118,7 @@ export function maxSumOfThreeSubarrays(nums: number[], k: number): number[] {
 }
 
 // 2D DP solution
-export function maxSumOfThreeSubarraysAlt(nums: number[], k: number): number[] {
+export function maxSumOfThreeSubarraysDP(nums: number[], k: number): number[] {
     const sums = Array(nums.length - k + 1).fill(0);
     let sum = 0;
 
