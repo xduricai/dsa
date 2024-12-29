@@ -16,10 +16,10 @@ function numWays(words: string[], target: string): number {
         }
 
         // compute results for every position in target
-        for (let targetIdx = target.length; targetIdx > 0; targetIdx--) {
-            const charIdx = target[targetIdx - 1].charCodeAt(0) - A;
-            dp[targetIdx] =
-                (dp[targetIdx] + dp[targetIdx - 1] * counter[charIdx]) % PRIME;
+        for (let targetIdx = target.length - 1; targetIdx >= 0; targetIdx--) {
+            const charIdx = target[targetIdx].charCodeAt(0) - A;
+            dp[targetIdx + 1] =
+                (dp[targetIdx + 1] + dp[targetIdx] * counter[charIdx]) % PRIME;
         }
     }
 
