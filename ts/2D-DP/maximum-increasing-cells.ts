@@ -3,8 +3,8 @@ export function maxIncreasingCells(mat: number[][]): number {
     const COLS = mat[0].length;
 
     const valueMap = new Map<number, [number, number][]>();
-    const rowConnected = Array(ROWS).fill(0); // number of connected cells in each row
-    const colConnected = Array(COLS).fill(0); // number of connected cells in each column
+    const rowsConnected = Array(ROWS).fill(0); // number of connected cells in each row
+    const colsConnected = Array(COLS).fill(0); // number of connected cells in each column
 
     let res = 0;
 
@@ -22,23 +22,23 @@ export function maxIncreasingCells(mat: number[][]): number {
     }
 
     for (const key of Array.from(valueMap.keys()).sort((a, b) => a - b)) {
-        const dp = new Map();
+        // lengths of paths that include the current (lowest unvisited) value
+        const results = new Map<string, number>();
 
         for (const [row, col] of valueMap.get(key)) {
-            const max = 1 + Math.max(rowConnected[row], colConnected[col]);
-            dp.set(`${row}-${col}`, max);
+            // longest sequence that includes the current cell
+            const max = 1 + Math.max(rowsConnected[row], colsConnected[col]);
+            results.set(`${row}-${col}`, max);
+
+            // update global res
             res = Math.max(res, max);
         }
 
         for (const [row, col] of valueMap.get(key)) {
-            rowConnected[row] = Math.max(
-                rowConnected[row],
-                dp.get(`${row}-${col}`)
-            );
-            colConnected[col] = Math.max(
-                colConnected[col],
-                dp.get(`${row}-${col}`)
-            );
+            // update longest path length for corresponding row and column
+            const max = results.get(`${row}-${col}`);
+            rowsConnected[row] = Math.max(rowsConnected[row], max);
+            colsConnected[col] = Math.max(colsConnected[col], max);
         }
     }
 
