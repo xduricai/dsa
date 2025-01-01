@@ -1,5 +1,20 @@
-// DP
+// optimized DP
 export function lastStoneWeightII(stones: number[]): number {
+    const sum = stones.reduce((acc, curr) => acc + curr, 0);
+    const target = Math.ceil(sum / 2);
+    const dp = Array(target + 1).fill(0);
+
+    for (const weight of stones) {
+        for (let idx = target; idx >= weight; idx--) {
+            dp[idx] = Math.max(dp[idx], dp[idx - weight] + weight);
+        }
+    }
+
+    return Math.abs(sum - 2 * dp[target]);
+}
+
+// DP
+export function lastStoneWeightIIAlt(stones: number[]): number {
     let currentDP = new Set<number>([0]);
 
     for (const stone of stones) {
@@ -18,7 +33,7 @@ export function lastStoneWeightII(stones: number[]): number {
 }
 
 // DFS + memoization
-export function lastStoneWeightIIAlt(stones: number[]): number {
+export function lastStoneWeightIIDfs(stones: number[]): number {
     const stoneSum = stones.reduce((acc, current) => acc + current, 0);
     const target = Math.ceil(stoneSum / 2);
     const DP = new Map<string, number>();
