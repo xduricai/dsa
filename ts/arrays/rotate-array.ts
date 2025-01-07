@@ -28,12 +28,15 @@ export function rotate(nums: number[], k: number): void {
 
 // array reversal approach
 export function rotateAlt(nums: number[], k: number): void {
-    k %= nums.length;
-    const pivot = nums.length - k;
+    const n = nums.length;
+    k %= n;
 
-    reverse(nums, 0, pivot - 1);
-    reverse(nums, pivot, nums.length - 1);
-    reverse(nums, 0, nums.length - 1);
+    // reverse the entire array
+    reverse(nums, 0, n - 1);
+    // reverse the first k elements
+    reverse(nums, 0, k - 1);
+    // reverse the remaining elements
+    reverse(nums, k, n - 1);
 }
 
 function reverse(nums: number[], left: number, right: number) {

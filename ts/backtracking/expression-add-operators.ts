@@ -5,7 +5,7 @@ export function addOperators(num: string, target: number): string[] {
     const backtrack = (
         idx: number,
         value: number,
-        prev: number,
+        prevNum: number,
         currNum: number
     ) => {
         if (idx === num.length) {
@@ -19,7 +19,7 @@ export function addOperators(num: string, target: number): string[] {
         const currStr = currNum.toString();
 
         if (currNum > 0) {
-            backtrack(idx + 1, value, prev, currNum);
+            backtrack(idx + 1, value, prevNum, currNum);
         }
 
         ops.push("+");
@@ -39,8 +39,8 @@ export function addOperators(num: string, target: number): string[] {
             ops.push(currStr);
             backtrack(
                 idx + 1,
-                value - prev + currNum * prev,
-                prev * currNum,
+                value - prevNum + prevNum * currNum, // undo the previous operation, then multiply the previous number and add it back
+                prevNum * currNum,
                 0
             );
             ops.pop();
