@@ -1,4 +1,16 @@
+// optimal solution
 export function subsetXORSum(nums: number[]): number {
+    let res = 0;
+
+    for (const num of nums) {
+        res |= num;
+    }
+
+    return res << (nums.length - 1);
+}
+
+// backtracking solution
+export function subsetXORSumAlt(nums: number[]): number {
     let res = 0;
     let xor = 0;
 
