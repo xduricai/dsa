@@ -1,6 +1,6 @@
 import { TreeNode } from "./tree-node";
 
-function rob(root: TreeNode | null): number {
+export function rob(root: TreeNode | null): number {
     return solve(root)[1];
 }
 
