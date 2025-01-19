@@ -1,12 +1,9 @@
 // slightly optimized memoization solution
 export function wordBreak(s: string, wordDict: string[]): string[] {
     const words = new Set(wordDict);
-    const cache = new Map<number, string[]>();
+    const cache = new Map<number, string[]>([[s.length, [""]]]);
 
     const backtrack = (start: number) => {
-        if (start === s.length) {
-            return [""];
-        }
         if (cache.has(start)) {
             return cache.get(start);
         }
