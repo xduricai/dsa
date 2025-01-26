@@ -1,3 +1,4 @@
+// the reason we start iterating from the max of rigth and left + minJump is that we've already checked everything up to the right index and there is no reason to look at it again
 export function canReach(s: string, minJump: number, maxJump: number): boolean {
     const dp = new Array(s.length).fill(false);
     dp[0] = true;
