@@ -1,3 +1,9 @@
+// count == 1 -> 0 pairs -> 0 tuples
+// count == 2 -> 1 pairs -> 8 tuples (sum of 1..1 * 8)
+// count == 3 -> 3 pairs -> 24 tuples (sum of 1..2 * 8)
+// count == 4 -> 6 pairs -> 48 tuples (sum of 1..3 * 8)
+// count == 5 -> 10 pairs -> 80 tuples (sum of 1..4 * 8)
+
 export function tupleSameProduct(nums: number[]): number {
     const productCount = new Map<number, number>();
     let res = 0;
@@ -11,6 +17,7 @@ export function tupleSameProduct(nums: number[]): number {
     }
 
     for (const [_, count] of productCount) {
+        // sum of all numbers
         const pairs = (count * (count - 1)) >> 1;
         res += pairs * 8;
     }
