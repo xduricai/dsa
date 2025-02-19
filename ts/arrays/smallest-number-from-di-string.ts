@@ -1,4 +1,4 @@
-// linear time solution
+// linear time stack solution
 export function smallestNumber(pattern: string): string {
     const res = [];
     const stack = [];
