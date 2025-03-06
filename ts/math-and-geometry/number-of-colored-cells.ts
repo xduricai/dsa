@@ -1,6 +1,6 @@
-// O(1) solution
+// O(1) solution (sum of an arithmetic sequence)
 export function coloredCells(n: number): number {
-    return 1 + 2 * n * n - 2 * n;
+    return 1 + ((4 * (n - 1)) / 2) * n;
 }
 
 // suboptimal O(n) solution
