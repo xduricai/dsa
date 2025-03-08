@@ -1,3 +1,4 @@
+// Sieve of Eratosthenes
 export function closestPrimes(left: number, right: number): number[] {
     const root = Math.sqrt(right);
     const sieve = Array(right + 1).fill(true);
