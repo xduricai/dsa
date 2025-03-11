@@ -28,6 +28,7 @@ function atLeastK(word: string, k: number): number {
         counter[idx(word[right])]++;
 
         while (isValid()) {
+            // every substring with the current window as a prefix is also valid
             res += word.length - right;
             counter[idx(word[left])]--;
             left++;
