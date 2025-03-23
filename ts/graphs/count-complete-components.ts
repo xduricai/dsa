@@ -8,7 +8,7 @@ export function countCompleteComponents(n: number, edges: number[][]): number {
         uf.union(src, dst);
     }
 
-    for (const [src, dst] of edges) {
+    for (const [src, _] of edges) {
         const group = uf.find(src);
         edgeCounts[group]++;
     }
