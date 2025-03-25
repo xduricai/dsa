@@ -1,3 +1,5 @@
+// LC 3169 (https://leetcode.com/problems/count-days-without-meetings)
+
 export function countDays(days: number, meetings: number[][]): number {
     meetings.sort((a, b) => a[0] - b[0]);
     const merged = [meetings[0]];
