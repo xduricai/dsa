@@ -3,8 +3,8 @@
 export function robotWithString(s: string): string {
     const a = "a".charCodeAt(0);
     const counter = new Array(26).fill(0);
-    const stack: string[] = [];
-    const res: string[] = [];
+    const stack = [];
+    const res = [];
 
     for (const char of s) {
         counter[char.charCodeAt(0) - a]++;
